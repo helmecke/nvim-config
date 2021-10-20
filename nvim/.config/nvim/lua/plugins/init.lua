@@ -142,7 +142,18 @@ return packer.startup(function()
       },
     },
   }
-  use { 'diepm/vim-rest-console', ft = { 'rest' } }
+  use {
+    disable = true,
+    'diepm/vim-rest-console',
+    ft = { 'rest' },
+  }
+  use {
+    'NTBBloodbath/rest.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('rest-nvim').setup {}
+    end,
+  }
   use {
     'windwp/nvim-autopairs',
     config = [[require'plugins.nvim-autopairs']], -- ./nvim-autopairs.lua
