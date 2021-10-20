@@ -77,11 +77,6 @@ return packer.startup(function()
   }
   use { 'creativenull/diagnosticls-nvim', requires = 'neovim/nvim-lspconfig' }
   use {
-    'kabouzeid/nvim-lspinstall',
-    config = [[require'plugins.nvim-lspinstall']], -- ./nvim-lspinstall.lua
-    requires = 'neovim/nvim-lspconfig',
-  }
-  use {
     disable = true,
     'hrsh7th/nvim-compe',
     config = [[require'plugins.nvim-compe']], -- ./nvim-compe.lua
