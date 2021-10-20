@@ -214,4 +214,13 @@ return packer.startup(function()
     opt = true,
     cmd = { 'DirDiff' },
   }
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('indent_blankline').setup {
+        buftype_exclude = { 'terminal' },
+        filetype_exclude = { 'help' },
+      }
+    end,
+  }
 end)
