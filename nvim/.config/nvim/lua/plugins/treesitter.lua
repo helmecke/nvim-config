@@ -13,9 +13,9 @@ parser_configs.norg = {
 
 parser_configs.http = {
   install_info = {
-    url = "https://github.com/NTBBloodbath/tree-sitter-http",
-    files = { "src/parser.c" },
-    branch = "main",
+    url = 'https://github.com/NTBBloodbath/tree-sitter-http',
+    files = { 'src/parser.c' },
+    branch = 'main',
   },
 }
 
