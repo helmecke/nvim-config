@@ -1,4 +1,4 @@
-require 'configs.autogroups'
-require 'configs.filetypes'
-require 'configs.mappings'
-require 'configs.options'
+require 'configs.autogroups' -- ./autogroups.lua
+require 'configs.filetypes' -- ./filetypes.lua
+require 'configs.mappings' -- ./mappings.lua
+require 'configs.options' -- ./options.lua
