@@ -1,7 +1,7 @@
 .PHONY: fmt
 
 fmt:
-	stylua --glob '**/*.lua' -- nvim/.config/nvim
+	stylua -s nvim/.config/nvim
 
 pre-commit:
-	stylua -c --glob '**/*.lua' -- nvim/.config/nvim
+	stylua -c -s nvim/.config/nvim
