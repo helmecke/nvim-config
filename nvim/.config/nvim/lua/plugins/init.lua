@@ -225,7 +225,7 @@ return packer.startup(function()
     config = function()
       require('indent_blankline').setup {
         buftype_exclude = { 'terminal' },
-        filetype_exclude = { 'help' },
+        filetype_exclude = { 'help', 'packer', 'NvimTree' },
       }
     end,
   }
