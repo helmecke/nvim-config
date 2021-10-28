@@ -60,7 +60,6 @@ require('which-key').register {
       g = { '<cmd>Telescope live_grep<cr>', 'Find string' },
       r = { '<cmd>Telescope oldfiles<cr>', 'Find recent file' },
       m = { '<cmd>Telescope man_pages<cr>', 'Find man page' },
-      s = { '<cmd>Telescope session-lens search_session<cr>', 'Find session' },
     },
     g = {
       name = '+git',

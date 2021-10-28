@@ -229,9 +229,4 @@ return packer.startup(function()
       }
     end,
   }
-  use {
-    'rmagatti/session-lens',
-    requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
-    config = [[require'plugins.session-lens']], -- ./session-lens.lua
-  }
 end)
