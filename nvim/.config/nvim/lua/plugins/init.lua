@@ -74,6 +74,7 @@ return packer.startup(function()
   use {
     'neovim/nvim-lspconfig',
     config = [[require'plugins.nvim-lspconfig']], -- ./nvim-lspconfig.lua
+    after = 'nvim-cmp',
   }
   use { 'creativenull/diagnosticls-nvim', requires = 'neovim/nvim-lspconfig' }
   use {
@@ -228,5 +229,8 @@ return packer.startup(function()
         filetype_exclude = { 'help', 'packer', 'NvimTree' },
       }
     end,
+  }
+  use {
+    'ray-x/lsp_signature.nvim',
   }
 end)
