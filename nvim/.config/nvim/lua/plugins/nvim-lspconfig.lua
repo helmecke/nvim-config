@@ -310,3 +310,5 @@ lspconfig.ansiblels.setup {
     },
   },
 }
+
+lspconfig.tflint.setup {}
