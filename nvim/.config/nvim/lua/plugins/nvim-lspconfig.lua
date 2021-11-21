@@ -3,7 +3,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local on_attach = function(client, bufnr, bla)
+local on_attach = function(client, bufnr)
   local noremap = { noremap = true, silent = true }
   local winnr = vim.api.nvim_get_current_win()
 
