@@ -233,4 +233,7 @@ return packer.startup(function()
   use {
     'ray-x/lsp_signature.nvim',
   }
+  use {
+    'towolf/vim-helm',
+  }
 end)
