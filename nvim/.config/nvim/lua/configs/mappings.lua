@@ -36,4 +36,6 @@ vim.api.nvim_set_keymap('n', 'J', 'mzJ`z', { noremap = true })
 
 -- convinient system yank or paste
 vim.api.nvim_set_keymap('n', '<leader>y', '"+y', { noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>p', '"+p', { noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>p', '"+p', { noremap = true })
