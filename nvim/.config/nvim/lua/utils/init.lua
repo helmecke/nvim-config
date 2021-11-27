@@ -1,7 +1,7 @@
 local utils = {}
 
 function utils.create_augroup(definitions)
-  for definition in pairs(definitions) do
+  for _, definition in pairs(definitions) do
     vim.cmd 'autocmd!'
     for _, def in ipairs(definition) do
       vim.cmd('autocmd ' .. def)
