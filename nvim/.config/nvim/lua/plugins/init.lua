@@ -112,10 +112,13 @@ return packer.startup(function()
     requires = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-ghq.nvim',
       'nvim-telescope/telescope-github.nvim',
       'nvim-telescope/telescope-fzy-native.nvim',
       'ThePrimeagen/git-worktree.nvim',
+      {
+        'helmecke/telescope-ghq.nvim',
+        branch = 'refactor',
+      },
     },
   }
   use {
