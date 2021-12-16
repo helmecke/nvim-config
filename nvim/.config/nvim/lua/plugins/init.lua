@@ -179,8 +179,10 @@ return packer.startup(function()
     config = [[require'plugins.nvim-colorizer']], -- ./nvim-colorizer.lua
   }
   use {
-    'b3nj5m1n/kommentary',
-    config = [[require'plugins.kommentary']], -- ./kommentary.lua
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end,
   }
   use {
     'tools-life/taskwiki',
