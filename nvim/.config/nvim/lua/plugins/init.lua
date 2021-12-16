@@ -168,9 +168,8 @@ return packer.startup(function()
     requires = 'kyazdani42/nvim-web-devicons',
   }
   use {
-    'glepnir/galaxyline.nvim',
-    branch = 'main',
-    config = [[require'plugins.galaxyline']], -- ./galaxyline.lua
+    'nvim-lualine/lualine.nvim',
+    config = [[require'plugins.lualine']], -- ./lualine.lua
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
   use { 'Glench/Vim-Jinja2-Syntax', ft = { 'jinja' } }
