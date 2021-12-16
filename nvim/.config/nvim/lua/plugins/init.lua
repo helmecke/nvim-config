@@ -212,7 +212,7 @@ return packer.startup(function()
   }
   use {
     'vhyrro/neorg',
-    branch = 'unstable',
+    branch = 'main',
     config = [[require'plugins.neorg']], -- ./neorg.lua
     requires = {
       'nvim-lua/plenary.nvim',
