@@ -1,6 +1,5 @@
 local lspconfig = require 'lspconfig'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local utils = require 'utils'
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
@@ -42,11 +41,6 @@ local on_attach = function(client, bufnr)
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[command! -buffer LspFormat lua vim.lsp.buf.formatting()]]
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', noremap)
-    utils.create_augroup {
-      lsp_formatting = {
-        'BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)',
-      },
-    }
   end
 
   if client.resolved_capabilities.document_range_formatting then
