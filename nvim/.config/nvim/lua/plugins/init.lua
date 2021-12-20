@@ -219,6 +219,7 @@ return packer.startup(function()
       'nvim-lua/plenary.nvim',
       'vhyrro/neorg-telescope',
     },
+    after = "nvim-treesitter"
   }
   use {
     'will133/vim-dirdiff',
