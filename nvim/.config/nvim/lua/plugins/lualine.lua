@@ -129,9 +129,9 @@ local config = {
     },
     lualine_x = {
       {
-        function ()
+        function()
           return vim.bo.eol and '' or '!EOL'
-        end
+        end,
       },
       {
         'fileformat',
@@ -230,9 +230,9 @@ local config = {
     },
     lualine_x = {
       {
-        function ()
+        function()
           return vim.bo.eol and '' or '!EOL'
-        end
+        end,
       },
       {
         'fileformat',

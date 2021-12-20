@@ -73,7 +73,10 @@ require('neorg').setup {
           { 'it', 'core.norg.manoeuvre.textobject.inner-tag' },
           { 'al', 'core.norg.manoeuvre.textobject.around-whole-list' },
         },
-      }, { silent = true, noremap = true })
+      }, {
+        silent = true,
+        noremap = true,
+      })
 
       -- Map the below keys only when traverse-heading mode is active
       keybinds.map_event_to_mode('traverse-heading', {
@@ -82,7 +85,10 @@ require('neorg').setup {
           { 'j', 'core.integrations.treesitter.next.heading' },
           { 'k', 'core.integrations.treesitter.previous.heading' },
         },
-      }, { silent = true, noremap = true })
+      }, {
+        silent = true,
+        noremap = true,
+      })
 
       -- Map the below keys on gtd displays
       keybinds.map_event_to_mode('gtd-displays', {
@@ -96,7 +102,11 @@ require('neorg').setup {
           { 'e', 'core.gtd.ui.edit_task' },
           { '<Tab>', 'core.gtd.ui.details' },
         },
-      }, { silent = true, noremap = true, nowait = true })
+      }, {
+        silent = true,
+        noremap = true,
+        nowait = true,
+      })
 
       -- Map the below keys on presenter mode
       keybinds.map_event_to_mode('presenter', {
@@ -109,7 +119,11 @@ require('neorg').setup {
           { 'q', 'core.presenter.close' },
           { '<Esc>', 'core.presenter.close' },
         },
-      }, { silent = true, noremap = true, nowait = true })
+      }, {
+        silent = true,
+        noremap = true,
+        nowait = true,
+      })
 
       -- Apply the below keys to all modes
       keybinds.map_to_mode('all', {
@@ -117,7 +131,10 @@ require('neorg').setup {
           { neorg_leader .. 'mn', ':Neorg mode norg<CR>' },
           { neorg_leader .. 'mh', ':Neorg mode traverse-heading<CR>' },
         },
-      }, { silent = true, noremap = true })
+      }, {
+        silent = true,
+        noremap = true,
+      })
 
       keybinds.map_event_to_mode('norg', {
         n = {
@@ -126,7 +143,10 @@ require('neorg').setup {
         i = {
           { '<C-l>', 'core.integrations.telescope.insert_link' },
         },
-      }, { silent = true, noremap = true })
+      }, {
+        silent = true,
+        noremap = true,
+      })
     end)
   end,
 }
