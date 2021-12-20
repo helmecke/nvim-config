@@ -4,6 +4,10 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(client, bufnr)
+  if vim.api.nvim_buf_get_name(bufnr):match '^%a+://' then
+    return
+  end
+
   local noremap = { noremap = true, silent = true }
   local winnr = vim.api.nvim_get_current_win()
 
