@@ -58,6 +58,7 @@ cmp.setup {
     },
     { name = 'path' },
     { name = 'spell' },
+    { name = 'neorg' },
   },
   formatting = {
     format = lspkind.cmp_format {
@@ -69,6 +70,7 @@ cmp.setup {
         buffer = '[Buffer]',
         path = '[Path]',
         spell = '[Spell]',
+        neorg = '[Neorg]',
       },
     },
   },
