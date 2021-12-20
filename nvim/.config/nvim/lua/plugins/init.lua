@@ -161,6 +161,7 @@ return packer.startup(function()
   use {
     'windwp/nvim-autopairs',
     config = [[require'plugins.nvim-autopairs']], -- ./nvim-autopairs.lua
+    requires = { 'nvim-cmp' },
   }
   use {
     'akinsho/nvim-bufferline.lua',
