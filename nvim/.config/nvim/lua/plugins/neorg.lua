@@ -26,11 +26,7 @@ require('neorg').setup {
         zen_mode = 'zen-mode',
       },
     },
-    ['core.norg.journal'] = {
-      config = {
-        workspace = 'default',
-      },
-    },
+    ['core.norg.journal'] = {},
   },
   hook = function()
     local neorg_callbacks = require 'neorg.callbacks'
