@@ -9,7 +9,6 @@ local on_attach = function(client, bufnr)
   end
 
   local noremap = { noremap = true, silent = true }
-  local winnr = vim.api.nvim_get_current_win()
 
   -- Set log level
   --    See `:lua vim.cmd('e'..vim.lsp.get_log_path())`
@@ -18,7 +17,6 @@ local on_attach = function(client, bufnr)
   -- Use LSP as the handler for omnifunc.
   --    See `:help omnifunc` and `:help ins-completion` for more information.
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.api.nvim_win_set_option(winnr, 'signcolumn', 'no')
 
   -- Use LSP as the handler for formatexpr.
   --    See `:help formatexpr` for more information.
