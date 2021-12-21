@@ -132,19 +132,16 @@ local on_attach = function(client, bufnr)
   end
 end
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  -- virtual_text = {
-  --   source = "always",  -- Or "if_many"
-  -- },
+vim.diagnostic.config {
   virtual_text = false,
   signs = true,
   underline = true,
-  update_in_insert = false,
-})
-
-vim.diagnostic.config {
+  update_in_insert = true,
+  severity_sort = true,
   float = {
     source = 'always',
+    focusable = false,
+    header = '',
   },
 }
 
