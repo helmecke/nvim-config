@@ -77,11 +77,6 @@ return packer.startup(function()
     after = 'nvim-cmp',
   }
   use {
-    disable = true,
-    'hrsh7th/nvim-compe',
-    config = [[require'plugins.nvim-compe']], -- ./nvim-compe.lua
-  }
-  use {
     'jose-elias-alvarez/null-ls.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
   }
