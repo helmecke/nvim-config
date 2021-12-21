@@ -76,11 +76,14 @@ return packer.startup(function()
     config = [[require'plugins.nvim-lspconfig']], -- ./nvim-lspconfig.lua
     after = 'nvim-cmp',
   }
-  use { 'creativenull/diagnosticls-nvim', requires = 'neovim/nvim-lspconfig' }
   use {
     disable = true,
     'hrsh7th/nvim-compe',
     config = [[require'plugins.nvim-compe']], -- ./nvim-compe.lua
+  }
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
   }
   use {
     'hrsh7th/nvim-cmp',

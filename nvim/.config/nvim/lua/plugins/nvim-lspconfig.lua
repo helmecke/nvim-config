@@ -228,38 +228,6 @@ lspconfig.yamlls.setup {
   },
 }
 
-local shfmt = require 'lsp.diagnosticls.formatters.shfmt'
-local shellcheck = require 'lsp.diagnosticls.linters.shellcheck'
-local yamllint = require 'lsp.diagnosticls.linters.yamllint'
-
-lspconfig.diagnosticls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { 'sh', 'yaml', 'lua' },
-  init_options = {
-    filetypes = {
-      sh = 'shellcheck',
-      yaml = 'yamllint',
-    },
-    formatFiletypes = {
-      sh = 'shfmt',
-      lua = 'stylua',
-    },
-    formatters = {
-      shfmt = shfmt,
-      stylua = {
-        rootPatterns = { '.git' },
-        command = 'stylua',
-        args = { '-' },
-      },
-    },
-    linters = {
-      shellcheck = shellcheck,
-      yamllint = yamllint,
-    },
-  },
-}
-
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 local sumneko_root_path = '/usr/share/lua-language-server'
 local sumneko_binary = '/usr/bin/lua-language-server'
@@ -316,4 +284,17 @@ lspconfig.ansiblels.setup {
 lspconfig.tflint.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+local null_ls = require 'null-ls'
+
+null_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  sources = {
+    null_ls.builtins.code_actions.gitsigns,
+    null_ls.builtins.code_actions.shellcheck,
+    null_ls.builtins.diagnostics.shellcheck,
+    null_ls.builtins.formatting.stylua,
+  },
 }
