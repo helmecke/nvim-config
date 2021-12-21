@@ -244,4 +244,12 @@ return packer.startup(function()
   use {
     'towolf/vim-helm',
   }
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      -- ./gitsigns.lua
+      require 'plugins.gitsigns'
+    end,
+  }
 end)
