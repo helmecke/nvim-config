@@ -28,8 +28,9 @@ local config = {
     lualine_c = {
       {
         function()
-          return '▎'
+          return '▍'
         end,
+        color = { fg = colors.blue.gui },
         padding = { left = 0, right = 0 }, -- we don't need space before this
       },
       {
@@ -168,7 +169,7 @@ local config = {
     lualine_c = {
       {
         function()
-          return '▎'
+          return '▍'
         end,
         padding = { left = 0, right = 0 }, -- We don't need space before this
       },
@@ -267,8 +268,9 @@ local config = {
         lualine_c = {
           {
             function()
-              return '▎'
+              return '▍'
             end,
+            color = { fg = colors.blue.gui },
             padding = { left = 0, right = 0 },
           },
           {
