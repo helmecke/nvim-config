@@ -145,11 +145,6 @@ return packer.startup(function()
     },
   }
   use {
-    disable = true,
-    'diepm/vim-rest-console',
-    ft = { 'rest' },
-  }
-  use {
     'NTBBloodbath/rest.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = function()
@@ -183,32 +178,12 @@ return packer.startup(function()
     end,
   }
   use {
-    'tools-life/taskwiki',
-    config = [[require'plugins.taskwiki']], -- ./taskwiki.lua
-    requires = { 'powerman/vim-plugin-AnsiEsc', opt = true },
-  }
-  use {
-    'oberblastmeister/neuron.nvim',
-    config = [[require'plugins.neuron']], -- ./neuron.lua
-    requires = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-    },
-  }
-  use {
     'folke/which-key.nvim',
     config = [[require'plugins.which-key']], -- ./which-key.lua
   }
   use {
     'folke/zen-mode.nvim',
     config = [[require'plugins.zen-mode']], -- ./zen-mode.lua
-  }
-  use {
-    disable = true,
-    'aserowy/tmux.nvim',
-    commit = '2a42166',
-    config = [[require'plugins.tmux']], -- ./tmux.lua
   }
   use {
     'vhyrro/neorg',
@@ -242,9 +217,6 @@ return packer.startup(function()
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      -- ./gitsigns.lua
-      require 'plugins.gitsigns'
-    end,
+    config = [[require'plugins.gitsigns']], -- ./gitsigns.lua
   }
 end)
