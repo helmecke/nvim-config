@@ -1,4 +1,5 @@
 local lspconfig = require 'lspconfig'
+local util = require 'lspconfig.util'
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -269,13 +270,8 @@ require('lspconfig').sumneko_lua.setup {
 lspconfig.ansiblels.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  settings = {
-    ansible = {
-      ansibleLint = {
-        enabled = false,
-      },
-    },
-  },
+  filetypes = { 'yaml.ansible' },
+  root_dir = util.root_pattern('ansible.cfg', '.ansible-lint', 'group_vars'),
 }
 
 lspconfig.tflint.setup {
