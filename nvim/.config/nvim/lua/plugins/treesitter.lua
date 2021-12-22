@@ -41,7 +41,7 @@ parser_configs.gotmpl = {
     files = { 'src/parser.c' },
   },
   filetype = 'gotmpl',
-  used_by = { 'gohtmltmpl', 'gotexttmpl', 'gotmpl', 'yaml' },
+  used_by = { 'gohtmltmpl', 'gotexttmpl', 'gotmpl', 'yaml.helm' },
 }
 
 require('nvim-treesitter.configs').setup {
