@@ -136,6 +136,9 @@ require('neorg').setup {
           { neorg_leader .. 'jm', ':Neorg journal tomorrow<CR>' },
           { neorg_leader .. 'jt', ':Neorg journal today<CR>' },
           { neorg_leader .. 'jy', ':Neorg journal yesterday<CR>' },
+
+          -- Keys for managing presenter
+          { neorg_leader .. 'ps', ':Neorg presenter start<CR>' },
         },
       }, {
         silent = true,
