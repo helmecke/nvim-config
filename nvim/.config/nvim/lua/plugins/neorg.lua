@@ -147,4 +147,4 @@ require('neorg').setup {
   end,
 }
 
-vim.api.nvim_set_keymap('n', '<leader>oN', '<cmd>NeorgStart<cr>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>on', '<cmd>NeorgStart<cr>', { silent = true, noremap = true })
