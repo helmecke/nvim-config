@@ -9,7 +9,12 @@ local conditions = {
     return vim.fn.winwidth(0) > 80
   end,
   hl_search = function()
-    return vim.v.hlsearch ~= 0
+    local searchcount = vim.fn.searchcount { maxcount = 9999 }
+    return (vim.v.hlsearch ~= 0 and searchcount.current > 0)
+  end,
+  no_hl_search = function()
+    local searchcount = vim.fn.searchcount { maxcount = 9999 }
+    return (vim.v.hlsearch == 0 or searchcount.current == 0)
   end,
 }
 
@@ -75,9 +80,7 @@ local config = {
       },
       {
         'filesize',
-        cond = function()
-          return vim.fn.empty(vim.fn.expand '%:t') ~= 1 and vim.v.hlsearch == 0
-        end,
+        cond = conditions.no_hl_search,
       },
       {
         'filename',
