@@ -186,30 +186,9 @@ lspconfig.yamlls.setup {
   capabilities = capabilities,
   settings = {
     yaml = {
-      validate = true,
-      hover = true,
-      completion = true,
-      format = {
-        enable = true,
-      },
-      schemaStore = {
-        enable = true,
-        url = 'https://www.schemastore.org/api/json/catalog.json',
-      },
       schemas = {
         kubernetes = {
-          'kubectl-edit-*.yaml',
-          'daemon.{yml,yaml}',
-          'manager.{yml,yaml}',
-          'restapi.{yml,yaml}',
-          'role.{yml,yaml}',
-          'role_binding.{yml,yaml}',
-          '*onfigma*.{yml,yaml}',
-          '*ngres*.{yml,yaml}',
-          '*ecre*.{yml,yaml}',
-          '*eployment*.{yml,yaml}',
-          '*ervic*.{yml,yaml}',
-          'kubectl-edit*.yaml',
+          '/tmp/kubectl-edit-*.yaml',
         },
         ['https://json.schemastore.org/ansible-role-2.9.json'] = 'roles/**/{yml,yaml}',
         ['https://json.schemastore.org/ansible-playbook.json'] = 'playbook*.{yml,yaml}',
@@ -217,10 +196,11 @@ lspconfig.yamlls.setup {
         ['https://json.schemastore.org/github-workflow'] = '.github/workflows/*.{yml,yaml}',
         ['https://json.schemastore.org/github-action'] = '.github/**/action.{yml,yaml}',
         ['https://json.schemastore.org/circleciconfig'] = '.circleci/**/*.{yml,yaml}',
-        ['https://json.schemastore.org/gitlab-ci.json'] = {
+        ['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = {
           'gitlab-ci.{yml,yaml}',
           'gitlab-ci-templates/**/*.{yml,yaml}',
         },
+        ['https://json.schemastore.org/chart.json'] = '**/Chart.yaml',
       },
     },
   },
