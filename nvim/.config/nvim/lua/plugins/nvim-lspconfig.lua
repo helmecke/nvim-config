@@ -259,6 +259,11 @@ lspconfig.tflint.setup {
   capabilities = capabilities,
 }
 
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
 local null_ls = require 'null-ls'
 
 null_ls.setup {
