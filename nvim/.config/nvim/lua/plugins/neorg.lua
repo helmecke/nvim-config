@@ -58,9 +58,14 @@ require('neorg').setup {
           { '<CR>', 'core.norg.esupports.hop.hop-link' },
           { '<M-CR>', 'core.norg.esupports.hop.hop-link', 'vsplit' },
 
+          { '<C-s>', 'core.integrations.telescope.find_linkable' },
+
           -- TODO: rebind
           -- { '<M-k>', 'core.norg.manoeuvre.item_up' },
           -- { '<M-j>', 'core.norg.manoeuvre.item_down' },
+        },
+        i = {
+          { '<C-l>', 'core.integrations.telescope.insert_link' },
         },
         o = {
           { 'ah', 'core.norg.manoeuvre.textobject.around-heading' },
@@ -126,18 +131,7 @@ require('neorg').setup {
         n = {
           { neorg_leader .. 'mn', ':Neorg mode norg<CR>' },
           { neorg_leader .. 'mh', ':Neorg mode traverse-heading<CR>' },
-        },
-      }, {
-        silent = true,
-        noremap = true,
-      })
 
-      keybinds.map_event_to_mode('norg', {
-        n = {
-          { '<C-s>', 'core.integrations.telescope.find_linkable' },
-        },
-        i = {
-          { '<C-l>', 'core.integrations.telescope.insert_link' },
         },
       }, {
         silent = true,
