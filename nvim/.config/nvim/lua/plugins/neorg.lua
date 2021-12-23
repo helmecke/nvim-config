@@ -132,6 +132,10 @@ require('neorg').setup {
           { neorg_leader .. 'mn', ':Neorg mode norg<CR>' },
           { neorg_leader .. 'mh', ':Neorg mode traverse-heading<CR>' },
 
+          -- Keys for managing journal
+          { neorg_leader .. 'jm', ':Neorg journal tomorrow<CR>' },
+          { neorg_leader .. 'jt', ':Neorg journal today<CR>' },
+          { neorg_leader .. 'jy', ':Neorg journal yesterday<CR>' },
         },
       }, {
         silent = true,
