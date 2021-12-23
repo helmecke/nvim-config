@@ -30,7 +30,7 @@ require('neorg').setup {
   },
   hook = function()
     local neorg_callbacks = require 'neorg.callbacks'
-    local neorg_leader = '<leader>o'
+    local neorg_leader = '<localleader>'
 
     neorg_callbacks.on_event('core.keybinds.events.enable_keybinds', function(_, keybinds)
       -- Map all the below keybinds only when the "norg" mode is active
