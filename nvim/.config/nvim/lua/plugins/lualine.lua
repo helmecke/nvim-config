@@ -134,6 +134,19 @@ local config = {
     lualine_x = {
       {
         function()
+          local space_indent = vim.fn.search([[\v^ +]], 'nwc')
+          local tab_indent = vim.fn.search([[\v^\t+]], 'nwc')
+          return (space_indent > 0 and tab_indent > 0) and '!MI' or ''
+        end,
+      },
+      {
+        function()
+          local space = vim.fn.search([[\s\+$]], 'nwc')
+          return space > 0 and '!TW' or ''
+        end,
+      },
+      {
+        function()
           return vim.bo.eol and '' or '!EOL'
         end,
       },
@@ -233,11 +246,6 @@ local config = {
       },
     },
     lualine_x = {
-      {
-        function()
-          return vim.bo.eol and '' or '!EOL'
-        end,
-      },
       {
         'fileformat',
         icons_enabled = true,
