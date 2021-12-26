@@ -19,8 +19,12 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.wildmode = 'list:longest,full'
 vim.o.termguicolors = true
--- vim.o.spellfile = '~/.config/nvim/spell/en.utf-8.add,~/.config/nvim/spell/de.utf-8.add,~/.config/nvim/spell/names.utf-8.add'
--- vim.o.spelllang = 'en_us,de_de,names'
+vim.o.spellfile = table.concat({
+  vim.fn.expand '~/.local/share/nvim/site/spell/en.utf-8.add',
+  vim.fn.expand '~/.local/share/nvim/site/spell/de.utf-8.add',
+  vim.fn.expand '~/.local/share/nvim/site/spell/names.utf-8.add',
+}, ',')
+vim.o.spelllang = 'en,de,names'
 
 vim.wo.number = true
 vim.wo.relativenumber = true

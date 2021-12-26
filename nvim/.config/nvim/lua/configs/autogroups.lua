@@ -10,6 +10,9 @@ local autogroups = {
     'BufEnter,WinEnter *helm*/*/templates/*.{yml,yaml} :LspStop yamlls',
     'BufLeave *helm*/*/templates/*.{yml,yaml} :LspStart yamlls',
   },
+  spell_files = {
+    'BufWritePost */spell/*.add silent! :mkspell! %',
+  },
 }
 
 utils.create_augroup(autogroups)
