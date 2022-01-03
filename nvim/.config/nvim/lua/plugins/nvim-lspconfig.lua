@@ -38,8 +38,7 @@ local on_attach = function(client, bufnr)
     noremap
   )
   vim.cmd [[command! -buffer LspDocumentDiagnostics lua vim.lsp.buf.document_diagnostic()]]
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ltg', '<cmd>Telescope lsp_document_diagnostics<CR>', noremap)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ltQ', '<cmd>Telescope lsp_workspace_diagnostics<CR>', noremap)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ltg', '<cmd>Telescope diagnostics<CR>', noremap)
 
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[command! -buffer LspFormat lua vim.lsp.buf.formatting()]]
@@ -87,7 +86,7 @@ local on_attach = function(client, bufnr)
   if client.resolved_capabilities.workspace_symbol then
     vim.cmd [[command! -buffer LspWorkspaceSymbol lua vim.lsp.buf.workspace_symbol()]]
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ltS', '<cmd>Telescope lsp_workspace_symbols<CR>', noremap)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ltg', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', noremap)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ltw', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', noremap)
   end
 
   if client.resolved_capabilities.document_symbol then
