@@ -14,5 +14,5 @@ require('nvim-tree').setup {
   update_cwd = true,
 }
 
-vim.api.nvim_set_keymap('n', '<c-f>', '<cmd>NvimTreeToggle<cr>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tn', '<cmd>NvimTreeToggle<cr>', { silent = true })
 -- vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>NvimTreeFindFile<cr>', { silent = true })
