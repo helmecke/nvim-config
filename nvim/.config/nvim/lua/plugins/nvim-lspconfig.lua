@@ -174,8 +174,17 @@ lspconfig.pylsp.setup {
   capabilities = capabilities,
   settings = {
     pylsp = {
+      configurationSources = { 'flake8' },
       plugins = {
+        jedi_completion = {
+          include_params = true,
+          enabled = true,
+        },
         flake8 = { enabled = true },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
+        pyflakes = { enabled = false },
+        pycodestyle = { enabled = false },
       },
     },
   },
