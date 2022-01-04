@@ -19,7 +19,6 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.wildmode = 'list:longest,full'
 vim.o.termguicolors = true
-vim.o.spell = false
 vim.o.spellfile = table.concat({
   vim.fn.expand '~/.local/share/nvim/site/spell/en.utf-8.add',
   vim.fn.expand '~/.local/share/nvim/site/spell/de.utf-8.add',
@@ -32,3 +31,4 @@ vim.wo.relativenumber = true
 vim.wo.colorcolumn = '80'
 vim.wo.cursorline = true
 vim.wo.list = true
+vim.wo.spell = false
