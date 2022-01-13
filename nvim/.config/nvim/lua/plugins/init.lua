@@ -219,4 +219,9 @@ return packer.startup(function()
     requires = { 'nvim-lua/plenary.nvim' },
     config = [[require'plugins.gitsigns']], -- ./gitsigns.lua
   }
+  use {
+    'folke/todo-comments.nvim',
+    requires = 'nvim-lua/plenary.nvim',
+    config = [[require'plugins.todo-comments']], -- ./todo-comments.lua
+  }
 end)
