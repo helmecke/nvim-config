@@ -36,13 +36,6 @@ require('git-worktree').setup {
   update_on_change = false,
 }
 
--- require'telescope._extensions.ghq_builtin'.list({ attach_mappings = function(_, map)
---   map('i', '<c-d>', require'telescope.builtin'.git_files{cwd = dir}) -- this action already exist
---   map('n', '<c-d>', require'telescope.builtin'.git_files{cwd = dir}) -- this action already exist
---   -- For more actions look at lua/telescope/actions/init.lua
---   return true
--- end})
-
 vim.api.nvim_set_keymap('n', '<a-g>', '<cmd>Telescope ghq list<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', { noremap = true })
