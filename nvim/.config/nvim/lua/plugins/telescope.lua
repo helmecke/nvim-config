@@ -11,6 +11,9 @@ telescope.setup {
       override_generic_sorter = true,
       override_file_sorter = true,
     },
+    git_worktree = {
+      update_on_change = false,
+    },
   },
   pickers = {
     find_files = {
@@ -31,10 +34,6 @@ telescope.load_extension 'fzy_native'
 telescope.load_extension 'gh'
 telescope.load_extension 'ghq'
 telescope.load_extension 'git_worktree'
-
-require('git-worktree').setup {
-  update_on_change = false,
-}
 
 vim.api.nvim_set_keymap('n', '<a-g>', '<cmd>Telescope ghq list<cr>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { noremap = true })
