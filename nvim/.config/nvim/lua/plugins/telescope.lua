@@ -16,9 +16,6 @@ telescope.setup {
     find_files = {
       hidden = true,
     },
-    file_browser = {
-      hidden = true,
-    },
     buffers = {
       sort_lastused = true,
       show_all_buffers = true,
