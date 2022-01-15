@@ -8,10 +8,20 @@ vim.g.nvim_tree_icons = {
   symlink = '',
 }
 
+local tree_cb = require('nvim-tree.config').nvim_tree_callback
+
 require('nvim-tree').setup {
   disable_netrw = false,
   hijack_netrw = false,
   update_cwd = true,
+  auto_close = true,
+  view = {
+    mappings = {
+      list = {
+        { key = 'gq', cb = tree_cb 'close' },
+      },
+    },
+  },
 }
 
 vim.api.nvim_set_keymap('n', '<leader>tn', '<cmd>NvimTreeToggle<cr>', { silent = true })
