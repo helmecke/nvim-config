@@ -15,4 +15,11 @@ require('bufferline').setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>bp', '<cmd>BufferLinePick<cr>', { silent = true })
+require('which-key').register {
+  ['<leader>'] = {
+    b = {
+      name = '+buffer',
+      p = { '<cmd>BufferLinePick<cr>', 'pick' },
+    },
+  },
+}

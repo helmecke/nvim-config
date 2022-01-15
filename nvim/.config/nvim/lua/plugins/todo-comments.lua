@@ -28,3 +28,12 @@ require('todo-comments').setup {
     default = { 'Todo' },
   },
 }
+
+require('which-key').register {
+  ['<leader>oc'] = {
+    name = '+todo-comments',
+    l = { '<cmd>TodoLocList<cr>', 'loclist' },
+    q = { '<cmd>TodoQuickFix<cr>', 'quickfix' },
+    t = { '<cmd>TodoTelescope<cr>', 'telescope' },
+  },
+}

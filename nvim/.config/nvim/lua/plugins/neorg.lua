@@ -147,4 +147,9 @@ require('neorg').setup {
   end,
 }
 
-vim.api.nvim_set_keymap('n', '<leader>on', '<cmd>NeorgStart<cr>', { silent = true, noremap = true })
+require('which-key').register {
+  ['<leader>o'] = {
+    name = '+open',
+    n = { '<cmd>NeorgStart<cr>', 'neorg' },
+  },
+}

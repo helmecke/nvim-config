@@ -25,5 +25,15 @@ require('nvim-tree').setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>tn', '<cmd>NvimTreeToggle<cr>', { silent = true })
-vim.api.nvim_set_keymap('n', '<leader>ft', '<cmd>NvimTreeFindFile<cr>', { silent = true })
+require('which-key').register {
+  ['<leader>'] = {
+    t = {
+      name = '+toggle',
+      t = 'file tree',
+    },
+    f = {
+      name = '+file',
+      l = { '<cmd>NvimTreeFindFile<cr>', 'locate' },
+    },
+  },
+}

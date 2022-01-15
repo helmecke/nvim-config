@@ -1,1 +1,8 @@
-vim.api.nvim_set_keymap('', '<leader>bd', '<cmd>Bdelete<cr>', { noremap = true, silent = true })
+require('which-key').register {
+  ['<leader>'] = {
+    b = {
+      name = '+buffer',
+      d = { '<cmd>Bdelete<cr>', 'delete' },
+    },
+  },
+}

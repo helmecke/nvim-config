@@ -29,10 +29,8 @@ require('zen-mode').setup {
 }
 
 require('which-key').register {
-  ['<leader>'] = {
-    t = {
-      name = '+toggle',
-      z = { '<cmd>ZenMode<cr>', 'Zen Mode' },
-    },
+  ['<leader>t'] = {
+    name = '+toggle',
+    z = { '<cmd>ZenMode<cr>', 'zen mode' },
   },
 }
