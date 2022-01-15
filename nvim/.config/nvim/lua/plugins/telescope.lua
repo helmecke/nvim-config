@@ -1,4 +1,15 @@
 local telescope = require 'telescope'
+local telescope_actions = require 'telescope.actions.set'
+
+-- INFO: https://github.com/nvim-telescope/telescope.nvim/issues/699#issuecomment-1013520776
+local fixfolds = function(_)
+  telescope_actions.select:enhance {
+    post = function()
+      vim.cmd ':normal! zX'
+    end,
+  }
+  return true
+end
 
 telescope.setup {
   mappings = {
@@ -18,14 +29,28 @@ telescope.setup {
   pickers = {
     find_files = {
       hidden = true,
+      attach_mappings = fixfolds,
     },
     buffers = {
+      attach_mappings = fixfolds,
       sort_lastused = true,
       show_all_buffers = true,
       mappings = {
         i = { ['<c-d>'] = 'delete_buffer' },
         n = { ['<c-d>'] = 'delete_buffer' },
       },
+    },
+    git_files = {
+      attach_mappings = fixfolds,
+    },
+    grep_string = {
+      attach_mappings = fixfolds,
+    },
+    live_grep = {
+      attach_mappings = fixfolds,
+    },
+    oldfiles = {
+      attach_mappings = fixfolds,
     },
   },
 }
