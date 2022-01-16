@@ -4,6 +4,31 @@ end
 
 local cmp = require 'cmp'
 local lspkind = require 'lspkind'
+
+_G.vimrc = _G.vimrc or {}
+_G.vimrc.cmp = _G.vimrc.cmp or {}
+_G.vimrc.cmp.lsp = function()
+  cmp.complete {
+    config = {
+      sources = {
+        { name = 'nvim_lsp' },
+      },
+    },
+  }
+end
+_G.vimrc.cmp.snippet = function()
+  cmp.complete {
+    config = {
+      sources = {
+        { name = 'vsnip' },
+      },
+    },
+  }
+end
+
+vim.api.nvim_set_keymap('i', '<c-x><c-o>', '<cmd>lua vimrc.cmp.lsp()<cr>', { noremap = true })
+vim.api.nvim_set_keymap('i', '<c-x><c-s>', '<cmd>lua vimrc.cmp.snippet()<cr>', { noremap = true })
+
 cmp.setup {
   snippet = {
     expand = function(args)
