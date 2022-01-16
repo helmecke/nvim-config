@@ -32,10 +32,6 @@ return packer.startup(function()
       vim.cmd 'colorscheme onedark'
     end,
   }
-  use {
-    'hashivim/vim-terraform',
-    config = [[require'plugins.vim-terraform']], -- ./vim-terraform.lua
-  }
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
