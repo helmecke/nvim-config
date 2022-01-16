@@ -29,7 +29,7 @@ require('which-key').register {
   ['<leader>'] = {
     t = {
       name = '+toggle',
-      t = 'file tree',
+      t = { '<cmd>NvimTreeToggle<cr>', 'file tree' },
     },
     f = {
       name = '+file',
