@@ -43,6 +43,9 @@ local on_attach = function(client, bufnr)
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[command! -buffer LspFormat lua vim.lsp.buf.formatting()]]
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', noremap)
+    if client.name == 'terraformls' then
+      vim.cmd [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting_sync(nil, 500)]]
+    end
   end
 
   if client.resolved_capabilities.document_range_formatting then
