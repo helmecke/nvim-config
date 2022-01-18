@@ -1,8 +1,5 @@
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
 local cmp = require 'cmp'
+local luasnip = require 'luasnip'
 local lspkind = require 'lspkind'
 
 _G.vimrc = _G.vimrc or {}
@@ -20,7 +17,7 @@ _G.vimrc.cmp.snippet = function()
   cmp.complete {
     config = {
       sources = {
-        { name = 'vsnip' },
+        { name = 'luasnip' },
       },
     },
   }
@@ -32,7 +29,7 @@ vim.api.nvim_set_keymap('i', '<c-x><c-s>', '<cmd>lua vimrc.cmp.snippet()<cr>', {
 cmp.setup {
   snippet = {
     expand = function(args)
-      vim.fn['vsnip#anonymous'](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -47,8 +44,8 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif vim.fn['vsnip#available']() == 1 then
-        feedkey('<Plug>(vsnip-expand-or-jump)', '')
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -59,8 +56,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif vim.fn['vsnip#jumpable'](-1) == 1 then
-        feedkey('<Plug>(vsnip-jump-prev)', '')
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       end
     end, {
       'i',
@@ -69,7 +66,7 @@ cmp.setup {
   },
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
+    { name = 'luasnip' },
     {
       name = 'buffer',
       option = {
@@ -92,7 +89,7 @@ cmp.setup {
       maxwidth = 50,
       menu = {
         nvim_lsp = '[LSP]',
-        vsnip = '[Vsnip]',
+        luasnip = '[Snippet]',
         buffer = '[Buffer]',
         path = '[Path]',
         spell = '[Spell]',
