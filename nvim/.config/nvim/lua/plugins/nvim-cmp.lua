@@ -2,30 +2,6 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 local lspkind = require 'lspkind'
 
-_G.vimrc = _G.vimrc or {}
-_G.vimrc.cmp = _G.vimrc.cmp or {}
-_G.vimrc.cmp.lsp = function()
-  cmp.complete {
-    config = {
-      sources = {
-        { name = 'nvim_lsp' },
-      },
-    },
-  }
-end
-_G.vimrc.cmp.snippet = function()
-  cmp.complete {
-    config = {
-      sources = {
-        { name = 'luasnip' },
-      },
-    },
-  }
-end
-
-vim.api.nvim_set_keymap('i', '<c-x><c-o>', '<cmd>lua vimrc.cmp.lsp()<cr>', { noremap = true })
-vim.api.nvim_set_keymap('i', '<c-x><c-s>', '<cmd>lua vimrc.cmp.snippet()<cr>', { noremap = true })
-
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -89,7 +65,7 @@ cmp.setup {
       maxwidth = 50,
       menu = {
         nvim_lsp = '[LSP]',
-        luasnip = '[Snippet]',
+        luasnip = '[Luasnip]',
         buffer = '[Buffer]',
         path = '[Path]',
         spell = '[Spell]',
