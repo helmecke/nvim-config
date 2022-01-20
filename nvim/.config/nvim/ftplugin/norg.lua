@@ -7,32 +7,54 @@ if not success then
   return
 end
 wk.register({
-  j = {
-    name = '+journal',
-    m = 'tomorrow',
-    t = 'today',
-    y = 'yesterday',
+  ['<localleader>'] = {
+    t = {
+      name = '+task',
+      e = 'edit',
+      u = 'undone',
+      p = 'pending',
+      d = 'done',
+      h = 'hold',
+      c = 'cancelled',
+      r = 'recurring',
+      i = 'important',
+    },
+    j = {
+      name = '+journal',
+      m = 'tomorrow',
+      t = 'today',
+      y = 'yesterday',
+    },
+    m = {
+      name = '+mode',
+      h = 'traverse-heading',
+      n = 'norg',
+    },
+    n = {
+      name = '+new',
+      n = 'note',
+    },
+    p = {
+      name = '+presenter',
+      s = 'start',
+    },
   },
-  m = {
-    name = '+mode',
-    h = 'traverse-heading',
-    n = 'norg',
-  },
-  n = {
-    name = '+new',
-    n = 'note',
-  },
-  p = {
-    name = '+presenter',
-    s = 'start',
-  },
-  t = {
-    name = '+task',
-    c = 'capture',
+  ['<leader>n'] = {
+    n = 'new',
     e = 'edit',
-    v = 'view',
+    p = 'presenter',
+    j = {
+      name = '+journal',
+      m = 'tomorrow',
+      t = 'today',
+      y = 'yesterday',
+    },
+    m = {
+      name = '+mode',
+      h = 'traverse-heading',
+      n = 'norg',
+    },
   },
 }, {
   buffer = 0,
-  prefix = '<localleader>',
 })

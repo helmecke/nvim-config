@@ -15,11 +15,17 @@ require('neorg').setup {
     ['core.norg.dirman'] = {
       config = {
         workspaces = {
-          default = '~/Documents/neorg',
+          personal = '~/Documents/neorg',
+          gtd = '~/Documents/gtd',
         },
+        autochdir = true,
       },
     },
-    ['core.gtd.base'] = {},
+    ['core.gtd.base'] = {
+      config = {
+        workspace = 'gtd',
+      },
+    },
     ['core.integrations.telescope'] = {},
     ['core.presenter'] = {
       config = {
@@ -30,30 +36,30 @@ require('neorg').setup {
   },
   hook = function()
     local neorg_callbacks = require 'neorg.callbacks'
-    local neorg_leader = '<localleader>'
+    local leader = '<leader>'
+    local localleader = '<localleader>'
 
     neorg_callbacks.on_event('core.keybinds.events.enable_keybinds', function(_, keybinds)
       -- Map all the below keybinds only when the "norg" mode is active
       keybinds.map_event_to_mode('norg', {
         n = {
           -- Keys for managing TODO items and setting their states
-          -- TODO: rebind
-          -- { 'gtu', 'core.norg.qol.todo_items.todo.task_undone' },
-          -- { 'gtp', 'core.norg.qol.todo_items.todo.task_pending' },
-          -- { 'gtd', 'core.norg.qol.todo_items.todo.task_done' },
-          -- { 'gth', 'core.norg.qol.todo_items.todo.task_on_hold' },
-          -- { 'gtc', 'core.norg.qol.todo_items.todo.task_cancelled' },
-          -- { 'gtr', 'core.norg.qol.todo_items.todo.task_recurring' },
-          -- { 'gti', 'core.norg.qol.todo_items.todo.task_important' },
+          { localleader .. 'tu', 'core.norg.qol.todo_items.todo.task_undone' },
+          { localleader .. 'tp', 'core.norg.qol.todo_items.todo.task_pending' },
+          { localleader .. 'td', 'core.norg.qol.todo_items.todo.task_done' },
+          { localleader .. 'th', 'core.norg.qol.todo_items.todo.task_on_hold' },
+          { localleader .. 'tc', 'core.norg.qol.todo_items.todo.task_cancelled' },
+          { localleader .. 'tr', 'core.norg.qol.todo_items.todo.task_recurring' },
+          { localleader .. 'ti', 'core.norg.qol.todo_items.todo.task_important' },
           { '<C-Space>', 'core.norg.qol.todo_items.todo.task_cycle' },
 
           -- Keys for managing GTD
-          { neorg_leader .. 'tc', 'core.gtd.base.capture' },
-          { neorg_leader .. 'tv', 'core.gtd.base.views' },
-          { neorg_leader .. 'te', 'core.gtd.base.edit' },
+          { localleader .. 'te', 'core.gtd.base.edit' },
+          { leader .. 'ne', 'core.gtd.base.edit' },
 
           -- Keys for managing notes
-          { neorg_leader .. 'nn', 'core.norg.dirman.new.note' },
+          { localleader .. 'nn', 'core.norg.dirman.new.note' },
+          { leader .. 'nn', 'core.norg.dirman.new.note' },
 
           { '<CR>', 'core.norg.esupports.hop.hop-link' },
           { '<M-CR>', 'core.norg.esupports.hop.hop-link', 'vsplit' },
@@ -129,16 +135,22 @@ require('neorg').setup {
       -- Apply the below keys to all modes
       keybinds.map_to_mode('all', {
         n = {
-          { neorg_leader .. 'mn', ':Neorg mode norg<CR>' },
-          { neorg_leader .. 'mh', ':Neorg mode traverse-heading<CR>' },
+          { localleader .. 'mn', ':Neorg mode norg<CR>' },
+          { localleader .. 'mh', ':Neorg mode traverse-heading<CR>' },
+          { leader .. 'nmn', ':Neorg mode norg<CR>' },
+          { leader .. 'nmh', ':Neorg mode traverse-heading<CR>' },
 
           -- Keys for managing journal
-          { neorg_leader .. 'jm', ':Neorg journal tomorrow<CR>' },
-          { neorg_leader .. 'jt', ':Neorg journal today<CR>' },
-          { neorg_leader .. 'jy', ':Neorg journal yesterday<CR>' },
+          { localleader .. 'jm', ':Neorg journal tomorrow<CR>' },
+          { localleader .. 'jt', ':Neorg journal today<CR>' },
+          { localleader .. 'jy', ':Neorg journal yesterday<CR>' },
+          { leader .. 'njm', ':Neorg journal tomorrow<CR>' },
+          { leader .. 'njt', ':Neorg journal today<CR>' },
+          { leader .. 'njy', ':Neorg journal yesterday<CR>' },
 
           -- Keys for managing presenter
-          { neorg_leader .. 'ps', ':Neorg presenter start<CR>' },
+          { localleader .. 'ps', ':Neorg presenter start<CR>' },
+          { leader .. 'np', ':Neorg presenter start<CR>' },
         },
       }, {
         silent = true,
@@ -148,9 +160,18 @@ require('neorg').setup {
   end,
 }
 
+vim.cmd 'autocmd VimEnter * NeorgStart silent=true'
+
 require('which-key').register {
-  ['<leader>o'] = {
-    name = '+open',
-    n = { '<cmd>NeorgStart<cr>', 'neorg' },
+  ['<leader>n'] = {
+    name = '+notes',
+    c = { '<cmd>Neorg gtd capture<cr>', 'capture' },
+    v = { '<cmd>Neorg gtd views<cr>', 'view' },
+    w = {
+      name = '+workspace',
+      g = { '<cmd>Neorg workspace gtd<cr>', 'gtd' },
+      p = { '<cmd>Neorg workspace personal<cr>', 'personal' },
+      w = { '<cmd>Neorg workspace work<cr>', 'work' },
+    },
   },
 }
