@@ -25,6 +25,8 @@ vim.o.spellfile = table.concat({
   vim.fn.expand '~/.local/share/nvim/site/spell/names.utf-8.add',
 }, ',')
 vim.o.spelllang = 'en,de,names'
+vim.o.title = true
+vim.o.titlestring = "nvim - %{join(split(substitute(getcwd(), $HOME, '~', ''), '/')[-1:], '')}"
 
 vim.wo.number = true
 vim.wo.relativenumber = true
