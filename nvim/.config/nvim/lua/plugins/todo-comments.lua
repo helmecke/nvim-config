@@ -30,10 +30,5 @@ require('todo-comments').setup {
 }
 
 require('which-key').register {
-  ['<leader>oc'] = {
-    name = '+todo-comments',
-    l = { '<cmd>TodoLocList<cr>', 'loclist' },
-    q = { '<cmd>TodoQuickFix<cr>', 'quickfix' },
-    t = { '<cmd>TodoTelescope<cr>', 'telescope' },
-  },
+  ['<leader>st'] = { '<cmd>TodoTelescope<cr>', 'todo-comment' },
 }
