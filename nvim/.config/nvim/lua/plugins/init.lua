@@ -228,4 +228,9 @@ return packer.startup(function()
       'folke/which-key.nvim',
     },
   }
+  use {
+    'stevearc/qf_helper.nvim',
+    config = [[require'plugins.qf_helper']], -- ./qf_helper.lua
+    requires = 'folke/which-key.nvim',
+  }
 end)
