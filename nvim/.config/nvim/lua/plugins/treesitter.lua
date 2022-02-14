@@ -41,6 +41,14 @@ parser_configs.gotmpl = {
   used_by = { 'gohtmltmpl', 'gotexttmpl', 'gotmpl', 'yaml.helm' },
 }
 
+parser_configs.jinja2 = {
+  install_info = {
+    url = 'https://github.com/theHamsta/tree-sitter-jinja2',
+    files = { 'src/parser.c' },
+  },
+  filetype = 'jinja',
+}
+
 require('nvim-treesitter.configs').setup {
   ensure_installed = 'maintained',
   highlight = { enable = true },
