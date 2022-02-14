@@ -233,4 +233,11 @@ return packer.startup(function()
     config = [[require'plugins.qf_helper']], -- ./qf_helper.lua
     requires = 'folke/which-key.nvim',
   }
+  use {
+    'anuvyklack/pretty-fold.nvim',
+    config = function()
+      require('pretty-fold').setup {}
+      require('pretty-fold.preview').setup()
+    end,
+  }
 end)
