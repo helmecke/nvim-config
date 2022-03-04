@@ -7,14 +7,20 @@ vim.g.nvim_tree_icons = {
   default = '',
   symlink = '',
 }
-vim.g.nvim_tree_disable_window_picker = 1
-vim.g.nvim_tree_quit_on_open = 1
 
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
 require('nvim-tree').setup {
   disable_netrw = false,
   update_cwd = true,
+  actions = {
+    open_file = {
+      window_picker = {
+        enable = false,
+      },
+      quit_on_open = true,
+    },
+  },
   view = {
     mappings = {
       list = {
