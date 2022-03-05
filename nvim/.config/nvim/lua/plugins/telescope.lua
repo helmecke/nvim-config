@@ -22,9 +22,6 @@ telescope.setup {
       override_generic_sorter = true,
       override_file_sorter = true,
     },
-    git_worktree = {
-      update_on_change = false,
-    },
   },
   pickers = {
     find_files = {

@@ -110,7 +110,7 @@ return packer.startup(function()
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-github.nvim',
       'nvim-telescope/telescope-fzy-native.nvim',
-      'ThePrimeagen/git-worktree.nvim',
+      'helmecke/telescope-git-worktree.nvim',
       {
         'helmecke/telescope-ghq.nvim',
         branch = 'refactor',
