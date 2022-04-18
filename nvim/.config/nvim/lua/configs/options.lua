@@ -17,7 +17,7 @@ vim.o.showbreak = '﬌ '
 vim.o.showmatch = true
 vim.o.splitbelow = true
 vim.o.splitright = true
-vim.o.wildmode = 'list:longest,full'
+vim.o.wildmode = 'longest,full'
 vim.o.termguicolors = true
 vim.o.spellfile = table.concat({
   vim.fn.expand '~/.local/share/nvim/site/spell/en.utf-8.add',
