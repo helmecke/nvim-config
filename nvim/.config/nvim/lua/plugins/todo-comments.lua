@@ -29,6 +29,4 @@ require('todo-comments').setup {
   },
 }
 
-require('which-key').register {
-  ['<leader>st'] = { '<cmd>TodoTelescope<cr>', 'todo-comment' },
-}
+vim.api.nvim_set_keymap('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = 'todo-comment' })

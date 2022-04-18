@@ -58,35 +58,18 @@ telescope.load_extension 'ghq'
 telescope.load_extension 'git_worktree'
 
 vim.api.nvim_set_keymap('n', '<a-g>', '<cmd>Telescope ghq list<cr>', { noremap = true })
-
-require('which-key').register {
-  ['<leader>'] = {
-    b = {
-      name = '+buffer',
-      b = { '<cmd>Telescope buffers<cr>', 'find' },
-    },
-    f = {
-      name = '+file',
-      f = { '<cmd>Telescope find_files<cr>', 'file' },
-      r = { '<cmd>Telescope oldfiles<cr>', 'recent file' },
-    },
-    g = {
-      name = '+git',
-      b = { '<cmd>Telescope git_branches<cr>', 'branch' },
-      C = { '<cmd>Telescope git_bcommits<cr>', 'buffer commit' },
-      c = { '<cmd>Telescope git_commits<cr>', 'commit' },
-      f = { '<cmd>Telescope git_files<cr>', 'file' },
-      r = { '<cmd>Telescope ghq list<cr>', 'repository' },
-      S = { '<cmd>Telescope git_stash<cr>', 'stash' },
-      s = { '<cmd>Telescope git_status<cr>', 'change' },
-      w = { '<cmd>Telescope git_worktree git_worktrees<cr>', 'worktree' },
-    },
-    s = {
-      name = '+search',
-      j = { '<cmd>Telescope jumplist<cr>', 'jumplist' },
-      m = { '<cmd>Telescope man_pages<cr>', 'man page' },
-      q = { '<cmd>Telescope quickfix<cr>', 'qickfix' },
-      s = { '<cmd>Telescope live_grep<cr>', 'string' },
-    },
-  },
-}
+vim.api.nvim_set_keymap('n', '<leader>bb', '<cmd>Telescope buffers<cr>', { desc = 'find' })
+vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'find' })
+vim.api.nvim_set_keymap('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'recent' })
+vim.api.nvim_set_keymap('n', '<leader>gb', '<cmd>Telescope git_branches<cr>', { desc = 'branch' })
+vim.api.nvim_set_keymap('n', '<leader>gC', '<cmd>Telescope git_bcommits<cr>', { desc = 'buffer commit' })
+vim.api.nvim_set_keymap('n', '<leader>gc', '<cmd>Telescope git_commits<cr>', { desc = 'commit' })
+vim.api.nvim_set_keymap('n', '<leader>gf', '<cmd>Telescope git_files<cr>', { desc = 'file' })
+vim.api.nvim_set_keymap('n', '<leader>gr', '<cmd>Telescope ghq list<cr>', { desc = 'repository' })
+vim.api.nvim_set_keymap('n', '<leader>gS', '<cmd>Telescope git_stash<cr>', { desc = 'stash' })
+vim.api.nvim_set_keymap('n', '<leader>gs', '<cmd>Telescope git_status<cr>', { desc = 'change' })
+vim.api.nvim_set_keymap('n', '<leader>gw', '<cmd>Telescope git_worktrees<cr>', { desc = 'worktree' })
+vim.api.nvim_set_keymap('n', '<leader>sj', '<cmd>Telescope jumplist<cr>', { desc = 'jumplist' })
+vim.api.nvim_set_keymap('n', '<leader>sm', '<cmd>Telescope man_pages<cr>', { desc = 'man page' })
+vim.api.nvim_set_keymap('n', '<leader>sq', '<cmd>Telescope quickfix<cr>', { desc = 'quickfix' })
+vim.api.nvim_set_keymap('n', '<leader>ss', '<cmd>Telescope live_grep<cr>', { desc = 'string' })

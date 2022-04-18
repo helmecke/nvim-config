@@ -1,15 +1,2 @@
-require('which-key').register {
-  ['<leader>g'] = {
-    name = '+git',
-    y = { '<cmd>GBrowse!<CR>', 'yank link' },
-  },
-}
-
-require('which-key').register({
-  ['<leader>g'] = {
-    name = '+git',
-    y = { '<cmd>GBrowse!<CR>', 'yank link' },
-  },
-}, {
-  mode = 'v',
-})
+vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>GBrowse!<CR>', { desc = 'yank link' })
+vim.api.nvim_set_keymap('v', '<leader>g', '<cmd>GBrowse!<CR>', { desc = 'yank link' })

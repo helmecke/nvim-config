@@ -28,9 +28,4 @@ require('zen-mode').setup {
   },
 }
 
-require('which-key').register {
-  ['<leader>t'] = {
-    name = '+toggle',
-    z = { '<cmd>ZenMode<cr>', 'zen mode' },
-  },
-}
+vim.api.nvim_set_keymap('n', '<leader>tz', '<cmd>ZenMode<cr>', { desc = 'zen mode' })

@@ -162,16 +162,8 @@ require('neorg').setup {
 
 vim.cmd 'autocmd VimEnter * NeorgStart silent=true'
 
-require('which-key').register {
-  ['<leader>n'] = {
-    name = '+notes',
-    c = { '<cmd>Neorg gtd capture<cr>', 'capture' },
-    v = { '<cmd>Neorg gtd views<cr>', 'view' },
-    w = {
-      name = '+workspace',
-      g = { '<cmd>Neorg workspace gtd<cr>', 'gtd' },
-      p = { '<cmd>Neorg workspace personal<cr>', 'personal' },
-      w = { '<cmd>Neorg workspace work<cr>', 'work' },
-    },
-  },
-}
+vim.api.nvim_set_keymap('n', '<leader>nc', '<cmd>Neorg gtd capture<cr>', { desc = 'capture' })
+vim.api.nvim_set_keymap('n', '<leader>nv', '<cmd>Neorg gtd views<cr>', { desc = 'view' })
+vim.api.nvim_set_keymap('n', '<leader>nwg', '<cmd>Neorg workspace gtd<cr>', { desc = 'gtd' })
+vim.api.nvim_set_keymap('n', '<leader>nwp', '<cmd>Neorg workspace personal<cr>', { desc = 'personal' })
+vim.api.nvim_set_keymap('n', '<leader>nww', '<cmd>Neorg workspace work<cr>', { desc = 'work' })

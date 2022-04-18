@@ -46,7 +46,6 @@ return packer.startup(function()
         'shumphrey/fugitive-gitlab.vim',
         config = [[require'plugins.fugitive-gitlab']], -- ./fugitive-gitlab.lua
       },
-      'folke/which-key.nvim',
     },
   }
   use {
@@ -60,14 +59,12 @@ return packer.startup(function()
   use {
     'moll/vim-bbye',
     config = [[require'plugins.bbye']], -- ./bbye.lua
-    requires = 'folke/which-key.nvim',
   }
   use {
     'kyazdani42/nvim-tree.lua',
     config = [[require'plugins.nvim-tree']], -- ./nvim-tree.lua
     requires = {
       'kyazdani42/nvim-web-devicons',
-      'folke/which-key.nvim',
     },
   }
   use {
@@ -115,7 +112,6 @@ return packer.startup(function()
         'helmecke/telescope-ghq.nvim',
         branch = 'refactor',
       },
-      'folke/which-key.nvim',
     },
   }
   use {
@@ -183,7 +179,6 @@ return packer.startup(function()
   use {
     'folke/zen-mode.nvim',
     config = [[require'plugins.zen-mode']], -- ./zen-mode.lua
-    requires = 'folke/which-key.nvim',
   }
   use {
     'vhyrro/neorg',
@@ -192,7 +187,6 @@ return packer.startup(function()
     requires = {
       'nvim-lua/plenary.nvim',
       'vhyrro/neorg-telescope',
-      'folke/which-key.nvim',
     },
     after = 'nvim-treesitter',
   }
@@ -225,13 +219,11 @@ return packer.startup(function()
     config = [[require'plugins.todo-comments']], -- ./todo-comments.lua
     requires = {
       'nvim-lua/plenary.nvim',
-      'folke/which-key.nvim',
     },
   }
   use {
     'stevearc/qf_helper.nvim',
     config = [[require'plugins.qf_helper']], -- ./qf_helper.lua
-    requires = 'folke/which-key.nvim',
   }
   use {
     'anuvyklack/pretty-fold.nvim',

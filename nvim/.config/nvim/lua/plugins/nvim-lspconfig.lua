@@ -1,6 +1,5 @@
 local lspconfig = require 'lspconfig'
 local util = require 'lspconfig.util'
-local wk = require 'which-key'
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -25,14 +24,7 @@ local on_attach = function(client, bufnr)
   --    See `:help formatexpr` for more information.
   vim.api.nvim_buf_set_option(bufnr, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
-  wk.register({
-    ['<leader>l'] = {
-      name = '+lsp',
-      s = { '<cmd>LspStop<cr>', 'stop' },
-    },
-  }, {
-    buffer = bufnr,
-  })
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ls', '<cmd>LspStop<cr>', { desc = 'stop' })
   -- See `:help nvim_buf_set_keymap()` for more information
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', noremap)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', noremap)
