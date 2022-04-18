@@ -1,11 +1,31 @@
-local lspconfig = require 'lspconfig'
+local success, lspconfig = pcall(require, 'lspconfig')
+if not success then
+  return
+end
+
 local util = require 'lspconfig.util'
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+local custom_init = function(client)
+  client.config.flags = client.config.flags or {}
+  client.config.flags.allow_incremental_sync = true
+end
 
-local on_attach = function(client, bufnr)
+local custom_exit = function(_, _)
+  vim.schedule(function()
+    vim.cmd [[
+      augroup lsp_document_highlight
+          autocmd!
+      augroup END
+    ]]
+    vim.cmd [[
+      augroup lsp_document_formatting
+          autocmd!
+      augroup END
+    ]]
+  end)
+end
+
+local custom_attach = function(client, bufnr)
   if vim.api.nvim_buf_get_name(bufnr):match '^%a+://' then
     return
   end
@@ -45,9 +65,12 @@ local on_attach = function(client, bufnr)
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[command! -buffer LspFormat lua vim.lsp.buf.formatting()]]
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', noremap)
-    if client.name == 'terraformls' then
-      vim.cmd [[autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting_sync(nil, 500)]]
-    end
+    vim.cmd [[
+            augroup lsp_document_formatting
+                autocmd! * <buffer>
+                autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting_sync()
+            augroup END
+        ]]
   end
 
   if client.resolved_capabilities.document_range_formatting then
@@ -112,13 +135,21 @@ local on_attach = function(client, bufnr)
   -- You will likely want to reduce updatetime which affects CursorHold
   -- note: this setting is global and should be set only once
   vim.o.updatetime = 250
-  -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
-  -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_position_diagnostics({focusable=false})]]
+  -- vim.cmd [[
+  --         augroup lsp_diagnostics
+  --             autocmd! * <buffer>
+  --             autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float()
+  --         augroup END
+  --     ]]
 
   if client.resolved_capabilities.document_highlight then
-    vim.cmd [[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]]
-    vim.cmd [[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]]
-    vim.cmd [[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]]
+    vim.cmd [[
+            augroup lsp_document_highlight
+                autocmd! * <buffer>
+                autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+        ]]
   end
 
   if client.resolved_capabilities.signature_help then
@@ -136,6 +167,9 @@ local on_attach = function(client, bufnr)
     }
   end
 end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 vim.diagnostic.config {
   virtual_text = false,
@@ -159,22 +193,30 @@ for type, icon in pairs(signs) do
 end
 
 lspconfig.terraformls.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
 }
 
 lspconfig.gopls.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
 }
 
 lspconfig.dotls.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
 }
 
 lspconfig.pylsp.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
   settings = {
     pylsp = {
@@ -195,7 +237,9 @@ lspconfig.pylsp.setup {
 }
 
 lspconfig.yamlls.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
   settings = {
     yaml = {
@@ -228,7 +272,9 @@ table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
 require('lspconfig').sumneko_lua.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
   cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
   settings = {
@@ -261,32 +307,39 @@ require('lspconfig').sumneko_lua.setup {
 }
 
 lspconfig.ansiblels.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
   filetypes = { 'yaml.ansible' },
   root_dir = util.root_pattern('ansible.cfg', '.ansible-lint', 'group_vars'),
 }
 
 lspconfig.tflint.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
 }
 
 lspconfig.gopls.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
 }
 
 local null_ls = require 'null-ls'
 
 null_ls.setup {
-  on_attach = on_attach,
+  on_init = custom_init,
+  on_attach = custom_attach,
+  on_exit = custom_exit,
   capabilities = capabilities,
   sources = {
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.diagnostics.shellcheck,
     null_ls.builtins.diagnostics.yamllint,
-    null_ls.builtins.formatting.stylua,
   },
 }
