@@ -12,16 +12,8 @@ end
 
 local custom_exit = function(_, _)
   vim.schedule(function()
-    vim.cmd [[
-      augroup lsp_document_highlight
-          autocmd!
-      augroup END
-    ]]
-    vim.cmd [[
-      augroup lsp_document_formatting
-          autocmd!
-      augroup END
-    ]]
+    vim.api.nvim_del_augroup_by_name 'lsp_document_highlight'
+    vim.api.nvim_del_augroup_by_name 'lsp_document_formatting'
   end)
 end
 
@@ -65,12 +57,11 @@ local custom_attach = function(client, bufnr)
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[command! -buffer LspFormat lua vim.lsp.buf.formatting()]]
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', noremap)
-    vim.cmd [[
-            augroup lsp_document_formatting
-                autocmd! * <buffer>
-                autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting_sync()
-            augroup END
-        ]]
+    local group = vim.api.nvim_create_augroup('lsp_document_formatting', { clear = true })
+    vim.api.nvim_create_autocmd(
+      'BufWritePost',
+      { command = 'lua vim.lsp.buf.formatting_sync()', group = group, buffer = 0 }
+    )
   end
 
   if client.resolved_capabilities.document_range_formatting then
@@ -143,13 +134,15 @@ local custom_attach = function(client, bufnr)
   --     ]]
 
   if client.resolved_capabilities.document_highlight then
-    vim.cmd [[
-            augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-        ]]
+    local group = vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
+    vim.api.nvim_create_autocmd(
+      'CursorHold,CursorHoldI',
+      { command = 'lua vim.lsp.buf.document_highlight()', group = group, buffer = 0 }
+    )
+    vim.api.nvim_create_autocmd(
+      'CursorMoved',
+      { command = 'lua vim.lsp.buf.clear_references()', group = group, buffer = 0 }
+    )
   end
 
   if client.resolved_capabilities.signature_help then
