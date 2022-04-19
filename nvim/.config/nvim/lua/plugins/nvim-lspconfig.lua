@@ -12,8 +12,8 @@ end
 
 local custom_exit = function(_, _)
   vim.schedule(function()
-    vim.api.nvim_del_augroup_by_name 'lsp_document_highlight'
-    vim.api.nvim_del_augroup_by_name 'lsp_document_formatting'
+    vim.api.nvim_create_augroup('lsp_document_formatting', { clear = true })
+    vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
   end)
 end
 
