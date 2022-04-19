@@ -38,8 +38,8 @@ local custom_attach = function(client, bufnr)
 
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ls', '<cmd>LspStop<cr>', { desc = 'stop' })
   -- See `:help nvim_buf_set_keymap()` for more information
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', noremap)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', noremap)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ']g', '<cmd>lua vim.diagnostic.goto_next()<CR>', noremap)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '[g', '<cmd>lua vim.diagnostic.goto_prev()<CR>', noremap)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lg', '<cmd>lua vim.diagnostic.setloclist()<CR>', noremap)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lq', '<cmd>lua vim.diagnostic.setqflist()<CR>', noremap)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', noremap)
