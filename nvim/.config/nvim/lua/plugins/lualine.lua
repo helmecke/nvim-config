@@ -26,6 +26,7 @@ local config = {
       normal = { c = { fg = colors.white.gui, bg = colors.vertsplit.gui } },
       inactive = { c = { fg = colors.comment_grey.gui, bg = '#23272E' } },
     },
+    globalstatus = true,
   },
   sections = {
     lualine_a = {},
