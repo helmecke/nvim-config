@@ -6,7 +6,11 @@ require('neorg').setup {
         default_keybinds = false,
       },
     },
-    ['core.norg.concealer'] = {},
+    ['core.norg.concealer'] = {
+      config = {
+        markup_preset = 'conceal',
+      },
+    },
     ['core.norg.completion'] = {
       config = {
         engine = 'nvim-cmp',
