@@ -142,9 +142,7 @@ return packer.startup(function()
   use {
     'NTBBloodbath/rest.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('rest-nvim').setup {}
-    end,
+    config = [[require'plugins.rest']], -- ./rest.lua
   }
   use {
     'windwp/nvim-autopairs',
