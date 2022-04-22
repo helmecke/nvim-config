@@ -68,7 +68,7 @@ vim.api.nvim_set_keymap('n', '<leader>gf', '<cmd>Telescope git_files<cr>', { des
 vim.api.nvim_set_keymap('n', '<leader>gr', '<cmd>Telescope ghq list<cr>', { desc = 'repository' })
 vim.api.nvim_set_keymap('n', '<leader>gS', '<cmd>Telescope git_stash<cr>', { desc = 'stash' })
 vim.api.nvim_set_keymap('n', '<leader>gs', '<cmd>Telescope git_status<cr>', { desc = 'change' })
-vim.api.nvim_set_keymap('n', '<leader>gw', '<cmd>Telescope git_worktrees<cr>', { desc = 'worktree' })
+vim.api.nvim_set_keymap('n', '<leader>gw', '<cmd>Telescope git_worktree git_worktrees<cr>', { desc = 'worktree' })
 vim.api.nvim_set_keymap('n', '<leader>sj', '<cmd>Telescope jumplist<cr>', { desc = 'jumplist' })
 vim.api.nvim_set_keymap('n', '<leader>sm', '<cmd>Telescope man_pages<cr>', { desc = 'man page' })
 vim.api.nvim_set_keymap('n', '<leader>sq', '<cmd>Telescope quickfix<cr>', { desc = 'quickfix' })
