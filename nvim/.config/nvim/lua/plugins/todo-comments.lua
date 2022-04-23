@@ -29,4 +29,17 @@ require('todo-comments').setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = 'todo-comment' })
+vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = 'todo-comment' })
+
+local success, wk = pcall(require, 'which-key')
+if not success then
+  return
+end
+
+wk.register {
+  ['<leader>'] = {
+    ['s'] = {
+      name = '+search',
+    },
+  },
+}

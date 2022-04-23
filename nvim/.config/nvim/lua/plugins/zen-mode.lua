@@ -28,4 +28,4 @@ require('zen-mode').setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>tz', '<cmd>ZenMode<cr>', { desc = 'zen mode' })
+vim.keymap.set('n', '<leader>tz', '<cmd>ZenMode<cr>', { desc = 'zen mode' })

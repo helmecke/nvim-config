@@ -15,4 +15,4 @@ require('bufferline').setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>bp', '<cmd>BufferLinePick<cr>', { desc = 'pick' })
+vim.keymap.set('n', '<leader>bp', '<cmd>BufferLinePick<cr>', { desc = 'pick' })

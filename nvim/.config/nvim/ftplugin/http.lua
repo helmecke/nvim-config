@@ -1,3 +1,3 @@
-vim.api.nvim_buf_set_keymap(0, 'n', '<cr>', '<plug>RestNvim', { silent = true })
-vim.api.nvim_buf_set_keymap(0, 'n', '<c-cr>', '<plug>RestNvimLast', { silent = true })
-vim.api.nvim_buf_set_keymap(0, 'n', '<c-p>', '<plug>RestNvimPreview', { silent = true })
+vim.keymap.set('n', '<cr>', '<plug>RestNvim', { buffer = 0, silent = true })
+vim.keymap.set('n', '<c-cr>', '<plug>RestNvimLast', { buffer = 0, silent = true })
+vim.keymap.set('n', '<c-p>', '<plug>RestNvimPreview', { buffer = 0, silent = true })

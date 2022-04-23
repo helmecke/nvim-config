@@ -8,5 +8,18 @@ require('qf_helper').setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '<leader>tl', '<cmd>LLToggle!<cr>', { desc = 'loclist' })
-vim.api.nvim_set_keymap('n', '<leader>tq', '<cmd>QFToggle!<cr>', { desc = 'quickfix' })
+vim.keymap.set('n', '<leader>tl', '<cmd>LLToggle!<cr>', { desc = 'loclist' })
+vim.keymap.set('n', '<leader>tq', '<cmd>QFToggle!<cr>', { desc = 'quickfix' })
+
+local success, wk = pcall(require, 'which-key')
+if not success then
+  return
+end
+
+wk.register {
+  ['<leader>'] = {
+    ['t'] = {
+      name = '+toggle',
+    },
+  },
+}
