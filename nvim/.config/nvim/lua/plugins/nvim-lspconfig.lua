@@ -236,11 +236,12 @@ lspconfig.yamlls.setup {
         kubernetes = {
           '/tmp/kubectl-edit-*.yaml',
         },
-        ['https://json.schemastore.org/ansible-role-2.9.json'] = {
-          'roles/**/*.{yml,yaml}',
-          'de.hacon.hafas.ansible.roles.*/**/*.{yml,yaml}',
-        },
-        ['https://raw.githubusercontent.com/ansible-community/schemas/main/f/ansible-playbook.json'] = 'playbook*.{yml,yaml}',
+        ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible.json#/definitions/playbook'] = 'playbook*.{yml,yaml}',
+        ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible.json#/definitions/tasks'] = '{tasks,handlers}/*.{yml,yaml}',
+        ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-requirements.json'] = 'requirements.{yml,yaml}',
+        ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-meta.json'] = 'meta/main.yml',
+        ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-vars.json'] = '{playbooks/vars/,vars/,defaults/,host_vars/,group_vars/}*.{yml,yaml}',
+        ['https://raw.githubusercontent.com/ansible/schemas/main/f/molecule.json'] = 'molecule/*/molecule.{yml,yaml}',
         ['https://json.schemastore.org/dependabot-2.0'] = '.github/dependabot.{yml,yaml}',
         ['https://json.schemastore.org/github-workflow'] = '.github/workflows/*.{yml,yaml}',
         ['https://json.schemastore.org/github-action'] = '.github/**/action.{yml,yaml}',
