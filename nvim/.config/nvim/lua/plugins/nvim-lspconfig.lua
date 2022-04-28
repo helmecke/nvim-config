@@ -305,7 +305,7 @@ lspconfig.ansiblels.setup {
   on_exit = custom_exit,
   capabilities = capabilities,
   filetypes = { 'yaml.ansible' },
-  root_dir = util.root_pattern('ansible.cfg', '.ansible-lint', 'group_vars'),
+  root_dir = util.root_pattern('ansible.cfg', '.ansible-lint', 'group_vars', 'host_vars'),
 }
 
 lspconfig.tflint.setup {
