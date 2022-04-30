@@ -119,10 +119,11 @@ return packer.startup(function()
     config = [[require'plugins.iron']], -- ./iron.lua
   }
   use {
+    disable = true,
     'vimwiki/vimwiki',
     config = [[require'plugins.vimwiki']], -- ./vimwiki.lua
   }
-  use { 'npxbr/glow.nvim', cmd = 'Glow', ft = { 'markdown', 'vimwiki' } }
+  use { disable = true, 'npxbr/glow.nvim', cmd = 'Glow', ft = { 'markdown', 'vimwiki' } }
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app & yarn install',
@@ -179,6 +180,7 @@ return packer.startup(function()
     config = [[require'plugins.zen-mode']], -- ./zen-mode.lua
   }
   use {
+    disable = true,
     'vhyrro/neorg',
     branch = 'main',
     config = [[require'plugins.neorg']], -- ./neorg.lua
@@ -229,5 +231,9 @@ return packer.startup(function()
       require('pretty-fold').setup {}
       require('pretty-fold.preview').setup()
     end,
+  }
+  use {
+    'mickael-menu/zk-nvim',
+    config = [[require'plugins.zk-nvim']], -- ./zk-nvim.lua
   }
 end)
