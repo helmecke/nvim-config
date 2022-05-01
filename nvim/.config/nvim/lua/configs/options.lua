@@ -34,4 +34,4 @@ vim.wo.colorcolumn = '80'
 vim.wo.cursorline = true
 vim.wo.list = true
 vim.wo.spell = false
-vim.wo.conceallevel = 2
+vim.wo.conceallevel = 0
