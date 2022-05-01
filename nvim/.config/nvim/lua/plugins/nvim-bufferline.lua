@@ -16,3 +16,16 @@ require('bufferline').setup {
 }
 
 vim.keymap.set('n', '<leader>bp', '<cmd>BufferLinePick<cr>', { desc = 'pick' })
+
+local success, wk = pcall(require, 'which-key')
+if not success then
+  return
+end
+
+wk.register {
+  ['<leader>'] = {
+    ['b'] = {
+      name = '+buffer',
+    },
+  },
+}

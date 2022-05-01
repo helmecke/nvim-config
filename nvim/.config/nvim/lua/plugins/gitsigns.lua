@@ -43,3 +43,19 @@ require('gitsigns').setup {
     ['x ih'] = ':<C-U>lua require"gitsigns".select_hunk()<CR>',
   },
 }
+
+local success, wk = pcall(require, 'which-key')
+if not success then
+  return
+end
+
+wk.register {
+  ['<leader>'] = {
+    ['g'] = {
+      name = '+git',
+      ['h'] = {
+        name = '+hunk',
+      },
+    },
+  },
+}

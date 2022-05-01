@@ -32,3 +32,16 @@ require('nvim-tree').setup {
 
 vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<cr>', { desc = 'file tree' })
 vim.keymap.set('n', '<leader>fl', '<cmd>NvimTreeFindFile<cr>', { desc = 'locate' })
+
+local success, wk = pcall(require, 'which-key')
+if not success then
+  return
+end
+
+wk.register {
+  ['<leader>'] = {
+    ['f'] = {
+      name = '+file',
+    },
+  },
+}

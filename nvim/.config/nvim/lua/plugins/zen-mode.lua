@@ -29,3 +29,16 @@ require('zen-mode').setup {
 }
 
 vim.keymap.set('n', '<leader>tz', '<cmd>ZenMode<cr>', { desc = 'zen mode' })
+
+local success, wk = pcall(require, 'which-key')
+if not success then
+  return
+end
+
+wk.register {
+  ['<leader>'] = {
+    ['t'] = {
+      name = '+toggle',
+    },
+  },
+}
