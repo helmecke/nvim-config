@@ -25,7 +25,6 @@ telescope.setup {
   },
   pickers = {
     find_files = {
-      hidden = true,
       attach_mappings = fixfolds,
     },
     buffers = {
@@ -60,6 +59,11 @@ telescope.load_extension 'git_worktree'
 vim.keymap.set('n', '<a-g>', '<cmd>Telescope ghq list<cr>')
 vim.keymap.set('n', '<leader>bb', '<cmd>Telescope buffers<cr>', { desc = 'find' })
 vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'find' })
+vim.keymap.set('n', '<leader>fF', function()
+  require('telescope.builtin').find_files { hidden = true }
+end, {
+  desc = 'find(hidden)',
+})
 vim.keymap.set('n', '<leader>fw', '<cmd>Telescope vimwiki vimwiki<cr>', { desc = 'wiki' })
 vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'recent' })
 vim.keymap.set('n', '<leader>gb', '<cmd>Telescope git_branches<cr>', { desc = 'branch' })
