@@ -266,7 +266,11 @@ table.insert(runtime_path, 'lua/?/init.lua')
 
 require('lspconfig').sumneko_lua.setup {
   on_init = custom_init,
-  on_attach = custom_attach,
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+    custom_attach(client, bufnr)
+  end,
   on_exit = custom_exit,
   capabilities = capabilities,
   cmd = { sumneko_binary, '-E', sumneko_root_path .. '/main.lua' },
@@ -334,5 +338,6 @@ null_ls.setup {
     null_ls.builtins.code_actions.shellcheck,
     null_ls.builtins.diagnostics.shellcheck,
     null_ls.builtins.diagnostics.yamllint,
+    null_ls.builtins.formatting.stylua,
   },
 }
