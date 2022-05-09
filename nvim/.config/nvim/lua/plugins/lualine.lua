@@ -10,10 +10,16 @@ local conditions = {
   end,
   hl_search = function()
     local searchcount = vim.fn.searchcount { maxcount = 9999 }
+    if searchcount.current == nil then
+      searchcount.current = 0
+    end
     return (vim.v.hlsearch ~= 0 and searchcount.current > 0)
   end,
   no_hl_search = function()
     local searchcount = vim.fn.searchcount { maxcount = 9999 }
+    if searchcount.current == nil then
+      searchcount.current = 0
+    end
     return (vim.v.hlsearch == 0 or searchcount.current == 0)
   end,
 }
