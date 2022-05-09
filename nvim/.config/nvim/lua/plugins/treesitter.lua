@@ -8,4 +8,13 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     disable = { 'yaml' },
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = '<cr>',
+      scope_incremental = '<cr>',
+      node_incremental = '<tab>',
+      node_decremental = '<s-tab>',
+    },
+  },
 }
