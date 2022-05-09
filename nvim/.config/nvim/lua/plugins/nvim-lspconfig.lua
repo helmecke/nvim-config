@@ -56,7 +56,7 @@ local custom_attach = function(client, bufnr)
     local group = vim.api.nvim_create_augroup('lsp_document_formatting', { clear = true })
     vim.api.nvim_create_autocmd(
       'BufWritePost',
-      { command = 'lua vim.lsp.buf.formatting_sync()', group = group, buffer = 0 }
+      { command = 'lua vim.lsp.buf.formatting_sync(nil,500)', group = group, buffer = 0 }
     )
   end
 
