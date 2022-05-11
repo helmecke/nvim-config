@@ -27,7 +27,7 @@ vim.o.spellfile = table.concat({
 vim.o.spelllang = 'en,de,names'
 vim.o.title = true
 vim.o.titlestring = "nvim • %{join(split(substitute(getcwd(), $HOME, '~', ''), '/')[-1:], '')}"
-vim.o.mouse = 'a'
+vim.o.mouse = 'nv'
 
 vim.wo.number = true
 vim.wo.relativenumber = true
