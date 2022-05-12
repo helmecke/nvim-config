@@ -331,6 +331,8 @@ lspconfig.gopls.setup {
   },
 }
 
+lspconfig.golangci_lint_ls.setup {}
+
 local null_ls = require 'null-ls'
 
 null_ls.setup {
