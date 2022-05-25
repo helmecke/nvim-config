@@ -238,4 +238,10 @@ return packer.startup(function()
     'mickael-menu/zk-nvim',
     config = [[require'plugins.zk-nvim']], -- ./zk-nvim.lua
   }
+  use {
+    'ray-x/go.nvim',
+    config = function()
+      require('go').setup()
+    end,
+  }
 end)
