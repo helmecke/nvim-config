@@ -239,6 +239,29 @@ return packer.startup(function()
     config = [[require'plugins.zk-nvim']], -- ./zk-nvim.lua
   }
   use {
+    'rcarriga/vim-ultest',
+    requires = { 'vim-test/vim-test' },
+    opt = true,
+    keys = { '<localleader>t' },
+    cmd = {
+      'TestNearest',
+      'TestFile',
+      'TestSuite',
+      'TestLast',
+      'TestVisit',
+      'Ultest',
+      'UltestNearest',
+      'UltestDebug',
+      'UltestLast',
+      'UltestSummary',
+    },
+    module = 'ultest',
+    run = ':UpdateRemotePlugins',
+    config = function()
+      require('config.test').setup()
+    end,
+  }
+  use {
     'ray-x/go.nvim',
     config = function()
       require('go').setup()
