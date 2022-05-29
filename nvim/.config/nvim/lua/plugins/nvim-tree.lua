@@ -1,13 +1,3 @@
-vim.g.nvim_tree_show_icons = { git = 0, folders = 1, files = 1, folder_arrows = 1 }
-vim.g.nvim_tree_git_hl = 1
-vim.g.nvim_tree_special_files = {}
-vim.g.nvim_tree_root_folder_modifier = ':p:~'
-vim.g.nvim_tree_highlight_opened_files = 0
-vim.g.nvim_tree_icons = {
-  default = '',
-  symlink = '',
-}
-
 local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
 require('nvim-tree').setup {
@@ -19,6 +9,24 @@ require('nvim-tree').setup {
         enable = false,
       },
       quit_on_open = true,
+    },
+  },
+  renderer = {
+    highlight_git = true,
+    highlight_opened_files = 'none',
+    special_files = {},
+    root_folder_modifier = ':p:~',
+    icons = {
+      glyphs = {
+        default = '',
+        symlink = '',
+      },
+      show = {
+        git = false,
+        folder = true,
+        file = true,
+        folder_arrow = true,
+      },
     },
   },
   view = {
