@@ -2,6 +2,8 @@ vim.bo.shiftwidth = 2
 vim.bo.expandtab = true
 vim.bo.tabstop = 2
 
+vim.keymap.set('n', '<localleader>p', '<Plug>MarkdownPreviewToggle', { buffer = true })
+
 -- Add the key mappings only for Markdown files in a zk notebook.
 if require('zk.util').notebook_root(vim.fn.expand '%:p') ~= nil then
   -- Open the link under the caret.

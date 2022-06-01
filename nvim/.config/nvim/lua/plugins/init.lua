@@ -125,6 +125,7 @@ return packer.startup(function()
   use { disable = true, 'npxbr/glow.nvim', cmd = 'Glow', ft = { 'markdown', 'vimwiki' } }
   use {
     'iamcco/markdown-preview.nvim',
+    setup = [[require'plugins.markdown-preview']], -- ./markdown-preview.lua
     run = 'cd app & yarn install',
     ft = { 'markdown', 'vimwiki' },
     cmd = 'MarkdownPreview',
