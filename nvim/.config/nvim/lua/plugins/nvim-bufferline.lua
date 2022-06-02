@@ -7,6 +7,8 @@ require('bufferline').setup {
     show_close_icon = false,
     show_buffer_close_icons = false,
     diagnostics = 'nvim_lsp',
+    right_mouse_command = '',
+    middle_mouse_command = 'bdelete! %d',
   },
   highlights = {
     indicator_selected = {
