@@ -126,9 +126,8 @@ return packer.startup(function()
   use {
     'iamcco/markdown-preview.nvim',
     setup = [[require'plugins.markdown-preview']], -- ./markdown-preview.lua
-    run = 'cd app & yarn install',
+    run = 'cd app & npm install',
     ft = { 'markdown', 'vimwiki' },
-    cmd = 'MarkdownPreview',
   }
   use {
     'tpope/vim-dadbod',
