@@ -32,10 +32,6 @@ return packer.startup(function()
       vim.cmd 'colorscheme onedark'
     end,
   }
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-surround'
-  use 'tjdevries/nlua.nvim'
-  use 'google/vim-jsonnet'
   use {
     'tpope/vim-fugitive',
     config = [[require'plugins.fugitive']], -- ./fugitive.lua
@@ -94,11 +90,6 @@ return packer.startup(function()
     requires = 'rafamadriz/friendly-snippets',
   }
   use {
-    'stevearc/vim-arduino',
-    setup = [[require'plugins.vim-arduino']], -- ./vim-arduino.lua
-    ft = 'arduino',
-  }
-  use {
     'nvim-telescope/telescope.nvim',
     config = [[require'plugins.telescope']], -- ./telescope.lua
     requires = {
@@ -114,30 +105,10 @@ return packer.startup(function()
     },
   }
   use {
-    'hkupty/iron.nvim',
-    config = [[require'plugins.iron']], -- ./iron.lua
-  }
-  use {
-    disable = true,
-    'vimwiki/vimwiki',
-    config = [[require'plugins.vimwiki']], -- ./vimwiki.lua
-  }
-  use { disable = true, 'npxbr/glow.nvim', cmd = 'Glow', ft = { 'markdown', 'vimwiki' } }
-  use {
     'iamcco/markdown-preview.nvim',
     setup = [[require'plugins.markdown-preview']], -- ./markdown-preview.lua
     run = 'cd app & npm install',
     ft = { 'markdown', 'vimwiki' },
-  }
-  use {
-    'tpope/vim-dadbod',
-    requires = {
-      'kristijanhusak/vim-dadbod-completion',
-      {
-        'kristijanhusak/vim-dadbod-ui',
-        config = [[require'plugins.vim-dadbod-ui']], -- ./vim-dadbod-ui.lua
-      },
-    },
   }
   use {
     'NTBBloodbath/rest.nvim',
@@ -159,7 +130,6 @@ return packer.startup(function()
     config = [[require'plugins.lualine']], -- ./lualine.lua
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
-  use { 'Glench/Vim-Jinja2-Syntax', ft = { 'jinja' } }
   use {
     'norcalli/nvim-colorizer.lua',
     config = [[require'plugins.nvim-colorizer']], -- ./nvim-colorizer.lua
@@ -177,22 +147,6 @@ return packer.startup(function()
   use {
     'folke/zen-mode.nvim',
     config = [[require'plugins.zen-mode']], -- ./zen-mode.lua
-  }
-  use {
-    disable = true,
-    'vhyrro/neorg',
-    branch = 'main',
-    config = [[require'plugins.neorg']], -- ./neorg.lua
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'vhyrro/neorg-telescope',
-    },
-    after = 'nvim-treesitter',
-  }
-  use {
-    'will133/vim-dirdiff',
-    opt = true,
-    cmd = { 'DirDiff' },
   }
   use {
     'lukas-reineke/indent-blankline.nvim',
@@ -237,34 +191,5 @@ return packer.startup(function()
   use {
     'mickael-menu/zk-nvim',
     config = [[require'plugins.zk-nvim']], -- ./zk-nvim.lua
-  }
-  use {
-    'rcarriga/vim-ultest',
-    requires = { 'vim-test/vim-test' },
-    opt = true,
-    keys = { '<localleader>t' },
-    cmd = {
-      'TestNearest',
-      'TestFile',
-      'TestSuite',
-      'TestLast',
-      'TestVisit',
-      'Ultest',
-      'UltestNearest',
-      'UltestDebug',
-      'UltestLast',
-      'UltestSummary',
-    },
-    module = 'ultest',
-    run = ':UpdateRemotePlugins',
-    config = function()
-      require('config.test').setup()
-    end,
-  }
-  use {
-    'ray-x/go.nvim',
-    config = function()
-      require('go').setup()
-    end,
   }
 end)
