@@ -31,7 +31,6 @@ return packer.startup(function()
       vim.cmd 'colorscheme onedark'
     end,
   }
-  use 'tpope/vim-unimpaired'
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
   use 'tjdevries/nlua.nvim'
