@@ -34,37 +34,37 @@ return packer.startup(function()
   }
   use {
     'tpope/vim-fugitive',
-    config = [[require'plugins.fugitive']], -- ./fugitive.lua
+    config = [[require'plugin.fugitive']], -- ./fugitive.lua
     requires = {
       'tpope/vim-rhubarb',
       {
         'shumphrey/fugitive-gitlab.vim',
-        config = [[require'plugins.fugitive-gitlab']], -- ./fugitive-gitlab.lua
+        config = [[require'plugin.fugitive-gitlab']], -- ./fugitive-gitlab.lua
       },
     },
   }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    config = [[require'plugins.treesitter']], -- ./treesitter.lua
+    config = [[require'plugin.treesitter']], -- ./treesitter.lua
     requires = {
       'nvim-treesitter/playground',
     },
   }
   use {
     'moll/vim-bbye',
-    config = [[require'plugins.bbye']], -- ./bbye.lua
+    config = [[require'plugin.bbye']], -- ./bbye.lua
   }
   use {
     'kyazdani42/nvim-tree.lua',
-    config = [[require'plugins.nvim-tree']], -- ./nvim-tree.lua
+    config = [[require'plugin.nvim-tree']], -- ./nvim-tree.lua
     requires = {
       'kyazdani42/nvim-web-devicons',
     },
   }
   use {
     'neovim/nvim-lspconfig',
-    config = [[require'plugins.nvim-lspconfig']], -- ./nvim-lspconfig.lua
+    config = [[require'plugin.nvim-lspconfig']], -- ./nvim-lspconfig.lua
     after = 'nvim-cmp',
   }
   use {
@@ -73,7 +73,7 @@ return packer.startup(function()
   }
   use {
     'hrsh7th/nvim-cmp',
-    config = [[require'plugins.nvim-cmp']], -- ./nvim-cmp.lua
+    config = [[require'plugin.nvim-cmp']], -- ./nvim-cmp.lua
     requires = {
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
@@ -86,12 +86,12 @@ return packer.startup(function()
   }
   use {
     'L3MON4D3/LuaSnip',
-    config = [[require'plugins.luasnip']], -- ./luasnip.lua
+    config = [[require'plugin.luasnip']], -- ./luasnip.lua
     requires = 'rafamadriz/friendly-snippets',
   }
   use {
     'nvim-telescope/telescope.nvim',
-    config = [[require'plugins.telescope']], -- ./telescope.lua
+    config = [[require'plugin.telescope']], -- ./telescope.lua
     requires = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
@@ -107,33 +107,33 @@ return packer.startup(function()
   }
   use {
     'iamcco/markdown-preview.nvim',
-    setup = [[require'plugins.markdown-preview']], -- ./markdown-preview.lua
+    setup = [[require'plugin.markdown-preview']], -- ./markdown-preview.lua
     run = 'cd app & npm install',
     ft = { 'markdown', 'vimwiki' },
   }
   use {
     'NTBBloodbath/rest.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
-    config = [[require'plugins.rest']], -- ./rest.lua
+    config = [[require'plugin.rest']], -- ./rest.lua
   }
   use {
     'windwp/nvim-autopairs',
-    config = [[require'plugins.nvim-autopairs']], -- ./nvim-autopairs.lua
+    config = [[require'plugin.nvim-autopairs']], -- ./nvim-autopairs.lua
     requires = { 'nvim-cmp' },
   }
   use {
     'akinsho/nvim-bufferline.lua',
-    config = [[require'plugins.nvim-bufferline']], -- ./nvim-bufferline.lua
+    config = [[require'plugin.nvim-bufferline']], -- ./nvim-bufferline.lua
     requires = 'kyazdani42/nvim-web-devicons',
   }
   use {
     'nvim-lualine/lualine.nvim',
-    config = [[require'plugins.lualine']], -- ./lualine.lua
+    config = [[require'plugin.lualine']], -- ./lualine.lua
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
   }
   use {
     'norcalli/nvim-colorizer.lua',
-    config = [[require'plugins.nvim-colorizer']], -- ./nvim-colorizer.lua
+    config = [[require'plugin.nvim-colorizer']], -- ./nvim-colorizer.lua
   }
   use {
     'numToStr/Comment.nvim',
@@ -143,18 +143,18 @@ return packer.startup(function()
   }
   use {
     'folke/which-key.nvim',
-    config = [[require'plugins.which-key']], -- ./which-key.lua
+    config = [[require'plugin.which-key']], -- ./which-key.lua
   }
   use {
     'folke/zen-mode.nvim',
-    config = [[require'plugins.zen-mode']], -- ./zen-mode.lua
+    config = [[require'plugin.zen-mode']], -- ./zen-mode.lua
   }
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('indent_blankline').setup {
         buftype_exclude = { 'terminal' },
-        filetype_exclude = { 'help', 'packer', 'NvimTree' },
+        filetype_exclude = { 'help', 'packer', 'NvimTree', 'alpha' },
         show_current_context = true,
         show_first_indent_level = false,
       }
@@ -166,18 +166,18 @@ return packer.startup(function()
   use {
     'lewis6991/gitsigns.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
-    config = [[require'plugins.gitsigns']], -- ./gitsigns.lua
+    config = [[require'plugin.gitsigns']], -- ./gitsigns.lua
   }
   use {
     'folke/todo-comments.nvim',
-    config = [[require'plugins.todo-comments']], -- ./todo-comments.lua
+    config = [[require'plugin.todo-comments']], -- ./todo-comments.lua
     requires = {
       'nvim-lua/plenary.nvim',
     },
   }
   use {
     'stevearc/qf_helper.nvim',
-    config = [[require'plugins.qf_helper']], -- ./qf_helper.lua
+    config = [[require'plugin.qf_helper']], -- ./qf_helper.lua
   }
   use {
     'anuvyklack/pretty-fold.nvim',
@@ -191,6 +191,6 @@ return packer.startup(function()
   }
   use {
     'mickael-menu/zk-nvim',
-    config = [[require'plugins.zk-nvim']], -- ./zk-nvim.lua
+    config = [[require'plugin.zk-nvim']], -- ./zk-nvim.lua
   }
 end)

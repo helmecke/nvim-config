@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local util = require 'util'
 
 local autogroups = {
   neovim_terminal = {
@@ -15,4 +15,4 @@ local autogroups = {
   },
 }
 
-utils.create_augroup(autogroups)
+util.create_augroup(autogroups)

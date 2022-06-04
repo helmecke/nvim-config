@@ -1,10 +1,10 @@
 vim.g.mapleader = ','
 vim.g.maplocalleader = ';'
 
-vim.keymap.set('', '<leader><leader>', '<c-^>', { desc = 'alternative file' })
-vim.keymap.set('', '<leader>cd', '<cmd>cd %:p:h<CR><cmd>pwd<CR>', { desc = 'directory' })
-vim.keymap.set('', '<leader><space>', '<cmd>nohlsearch<CR>', { desc = 'clear search' })
-vim.keymap.set('', '<leader>bc', '<cmd>bw<cr>', { desc = 'close', silent = true })
+vim.keymap.set('n', '<leader><leader>', '<c-^>', { desc = 'alternative file' })
+vim.keymap.set('n', '<leader>cd', '<cmd>cd %:p:h<CR><cmd>pwd<CR>', { desc = 'directory' })
+vim.keymap.set('n', '<leader><space>', '<cmd>nohlsearch<CR>', { desc = 'clear search' })
+vim.keymap.set('n', '<leader>bc', '<cmd>bw<cr>', { desc = 'close', silent = true })
 
 -- recommended navigation shortcuts :help terminal-input
 vim.keymap.set('t', '<m-j>', '<c-\\><c-n><c-w>j')
@@ -33,9 +33,9 @@ vim.keymap.set('i', '<c-k>', '<c-o>d$')
 vim.keymap.set('i', '<c-y>', '<c-o>P')
 vim.keymap.set('i', '<c-_>', '<c-o>u')
 
-vim.keymap.set('', '<leader>ots', '<cmd>botright sp +te<CR>', { desc = 'split' })
-vim.keymap.set('', '<leader>otv', '<cmd>botright vs +te<CR>', { desc = 'vertical' })
-vim.keymap.set('', '<leader>ott', '<cmd>tabe +te<CR>', { desc = 'tab' })
+vim.keymap.set('n', '<leader>ots', '<cmd>botright sp +te<CR>', { desc = 'split' })
+vim.keymap.set('n', '<leader>otv', '<cmd>botright vs +te<CR>', { desc = 'vertical' })
+vim.keymap.set('n', '<leader>ott', '<cmd>tabe +te<CR>', { desc = 'tab' })
 
 -- make Y behave like C and D, cursor to eol
 vim.keymap.set('n', 'Y', 'y$')

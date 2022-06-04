@@ -31,5 +31,5 @@ for _, plugin in pairs(default_plugins) do
   vim.g['loaded_' .. plugin] = 1
 end
 
-require 'configs' -- ./lua/configs/init.lua
-require 'plugins' -- ./lua/plugins/init.lua
+require 'config' -- ./lua/config/init.lua
+require 'plugin' -- ./lua/plugin/init.lua
