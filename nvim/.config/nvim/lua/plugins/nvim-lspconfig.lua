@@ -50,7 +50,7 @@ local custom_attach = function(client, bufnr)
   vim.cmd [[command! -buffer LspDocumentDiagnostics lua vim.lsp.buf.document_diagnostic()]]
   vim.keymap.set('n', '<leader>ltg', '<cmd>Telescope diagnostics<CR>', { buffer = bufnr })
 
-  if client.resolved_capabilities.document_formatting then
+  if client.server_capabilities.document_formatting then
     vim.cmd [[command! -buffer LspFormat lua vim.lsp.buf.formatting()]]
     vim.keymap.set('n', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', { buffer = bufnr })
     local group = vim.api.nvim_create_augroup('lsp_document_formatting', { clear = true })
@@ -60,61 +60,61 @@ local custom_attach = function(client, bufnr)
     )
   end
 
-  if client.resolved_capabilities.document_range_formatting then
+  if client.server_capabilities.document_range_formatting then
     vim.cmd [[command! -buffer LspFormat lua vim.lsp.buf.formatting()]]
     vim.keymap.set('v', '<leader>lf', '<cmd>lua vim.lsp.buf.range_formatting()<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.code_action then
+  if client.server_capabilities.code_action then
     vim.cmd [[command! -buffer LspCodeAction lua vim.lsp.buf.code_action()]]
     vim.keymap.set('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<CR>', { buffer = bufnr })
     vim.keymap.set('n', '<leader>lta', '<cmd>Telescope lsp_code_actions<CR>', { buffer = bufnr })
     vim.keymap.set('n', '<leader>ltA', '<cmd>Telescope lsp_range_code_actions<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.rename then
+  if client.server_capabilities.rename then
     vim.cmd [[command! -buffer LspRename lua vim.lsp.buf.rename()]]
     vim.keymap.set('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.find_references then
+  if client.server_capabilities.find_references then
     vim.cmd [[command! -buffer LspReferences lua vim.lsp.buf.references()]]
     vim.keymap.set('n', '<leader>ltr', '<cmd>Telescope lsp_references<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.implementation then
+  if client.server_capabilities.implementation then
     vim.cmd [[command! -buffer LspImplementation lua vim.lsp.buf.implementation()]]
     vim.keymap.set('n', '<leader>lti', '<cmd>Telescope lsp_implementations<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.hover then
+  if client.server_capabilities.hover then
     vim.cmd [[command! -buffer LspHover lua vim.lsp.buf.hover()]]
     vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.goto_definition then
+  if client.server_capabilities.goto_definition then
     vim.cmd [[command! -buffer LspDefinition lua vim.lsp.buf.definition()]]
     vim.keymap.set('n', '<c-]>', '<cmd>lua vim.lsp.buf.definition()<CR>', { buffer = bufnr })
     vim.keymap.set('n', '<leader>ltd', '<cmd>Telescope lsp_definitions<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.workspace_symbol then
+  if client.server_capabilities.workspace_symbol then
     vim.cmd [[command! -buffer LspWorkspaceSymbol lua vim.lsp.buf.workspace_symbol()]]
     vim.keymap.set('n', '<leader>ltS', '<cmd>Telescope lsp_workspace_symbols<CR>', { buffer = bufnr })
     vim.keymap.set('n', '<leader>ltw', '<cmd>Telescope lsp_dynamic_workspace_symbols<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.document_symbol then
+  if client.server_capabilities.document_symbol then
     vim.cmd [[command! -buffer LspDocumentSymbol lua vim.lsp.buf.document_symbol()]]
     vim.keymap.set('n', '<leader>lts', '<cmd>Telescope lsp_document_symbols<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.type_definition then
+  if client.server_capabilities.type_definition then
     vim.cmd [[command! -buffer LspTypeDefinition lua vim.lsp.buf.type_definition()]]
     vim.keymap.set('n', '<leader>ltt', '<cmd>Telescope lsp_type_definitions<CR>', { buffer = bufnr })
   end
 
-  if client.resolved_capabilities.declaration then
+  if client.server_capabilities.declaration then
     vim.cmd [[command! -buffer LspDeclaration lua vim.lsp.buf.declaration()]]
     vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', { buffer = bufnr })
   end
@@ -129,7 +129,7 @@ local custom_attach = function(client, bufnr)
   --         augroup END
   --     ]]
 
-  if client.resolved_capabilities.document_highlight then
+  if client.server_capabilities.document_highlight then
     local group = vim.api.nvim_create_augroup('lsp_document_highlight', { clear = true })
     vim.api.nvim_create_autocmd(
       'CursorHold,CursorHoldI',
@@ -141,7 +141,7 @@ local custom_attach = function(client, bufnr)
     )
   end
 
-  if client.resolved_capabilities.signature_help then
+  if client.server_capabilities.signature_help then
     vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { buffer = bufnr })
     -- vim.cmd([[autocmd CursorHoldI <buffer> silent! lua vim.lsp.buf.signature_help()]])
     require('lsp_signature').setup {}
@@ -185,7 +185,7 @@ lspconfig.terraformls.setup {
   on_init = custom_init,
   on_attach = function(client, bufnr)
     -- INFO: not yet supported https://github.com/hashicorp/terraform-ls/issues/857
-    client.resolved_capabilities.signature_help = false
+    client.server_capabilities.signature_help = false
     custom_attach(client, bufnr)
   end,
   on_exit = custom_exit,
@@ -271,8 +271,8 @@ table.insert(runtime_path, 'lua/?/init.lua')
 require('lspconfig').sumneko_lua.setup {
   on_init = custom_init,
   on_attach = function(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
+    client.server_capabilities.document_formatting = false
+    client.server_capabilities.document_range_formatting = false
     custom_attach(client, bufnr)
   end,
   on_exit = custom_exit,
