@@ -3,7 +3,11 @@ vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 
 require('nvim-treesitter.configs').setup {
   ensure_installed = 'all',
-  highlight = { enable = true },
+  highlight = {
+    enable = true,
+    use_languagetree = true,
+    additional_vim_regex_highlighting = false,
+  },
   indent = {
     enable = true,
     disable = { 'yaml' },
