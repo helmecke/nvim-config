@@ -193,4 +193,9 @@ return packer.startup(function()
     'mickael-menu/zk-nvim',
     config = [[require'plugin.zk-nvim']], -- ./zk-nvim.lua
   }
+  use {
+    'Shatur/neovim-session-manager',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = [[require'plugin.session-manager']], -- ./session-manager.lua
+  }
 end)
