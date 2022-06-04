@@ -22,6 +22,9 @@ telescope.setup {
       override_generic_sorter = true,
       override_file_sorter = true,
     },
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown {},
+    },
   },
   pickers = {
     find_files = {
@@ -55,6 +58,7 @@ telescope.load_extension 'fzy_native'
 telescope.load_extension 'gh'
 telescope.load_extension 'ghq'
 telescope.load_extension 'git_worktree'
+telescope.load_extension 'ui-select'
 
 vim.keymap.set('n', '<a-g>', '<cmd>Telescope ghq list<cr>')
 vim.keymap.set('n', '<leader>bb', '<cmd>Telescope buffers<cr>', { desc = 'find' })
