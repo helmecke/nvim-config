@@ -44,7 +44,10 @@ require('gitsigns').setup {
         gs.next_hunk()
       end)
       return '<Ignore>'
-    end, { desc = 'Next change', expr = true })
+    end, {
+      desc = 'Next change',
+      expr = true,
+    })
 
     map('n', '[c', function()
       if vim.wo.diff then
@@ -54,7 +57,10 @@ require('gitsigns').setup {
         gs.prev_hunk()
       end)
       return '<Ignore>'
-    end, { desc = 'Previous change', expr = true })
+    end, {
+      desc = 'Previous change',
+      expr = true,
+    })
 
     -- Actions
     map({ 'n', 'v' }, '<leader>ghs', ':Gitsigns stage_hunk<CR>', { desc = 'stage' })
