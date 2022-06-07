@@ -259,6 +259,8 @@ require('lspconfig').sumneko_lua.setup {
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
     custom_attach(client, bufnr)
   end,
   on_exit = custom_exit,
@@ -313,6 +315,7 @@ lspconfig.gopls.setup {
   on_init = custom_init,
   on_attach = function(client, bufnr)
     client.server_capabilities.codeLensProvider = true
+    client.resolved_capabilities.code_lens = true
     custom_attach(client, bufnr)
   end,
   on_exit = custom_exit,
