@@ -34,6 +34,7 @@ return packer.startup(function()
   }
   use {
     'tpope/vim-fugitive',
+    tag = 'v3.7',
     config = [[require'plugin.fugitive']], -- ./fugitive.lua
     requires = {
       'tpope/vim-rhubarb',
