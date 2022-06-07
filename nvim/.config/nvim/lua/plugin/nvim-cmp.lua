@@ -45,6 +45,7 @@ cmp.setup {
     { name = 'luasnip' },
     {
       name = 'buffer',
+      max_item_count = 5,
       option = {
         get_bufnrs = function()
           local bufs = {}
