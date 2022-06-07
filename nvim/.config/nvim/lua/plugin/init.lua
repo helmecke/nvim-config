@@ -114,6 +114,7 @@ return packer.startup(function()
   }
   use {
     'NTBBloodbath/rest.nvim',
+    commit = 'e5f68db',
     requires = { 'nvim-lua/plenary.nvim' },
     config = [[require'plugin.rest']], -- ./rest.lua
   }
