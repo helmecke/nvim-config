@@ -200,4 +200,6 @@ return packer.startup(function()
     requires = { 'nvim-lua/plenary.nvim' },
     config = [[require'plugin.session-manager']], -- ./session-manager.lua
   }
+  -- bug in CursorHold and CursorHoldI https://github.com/neovim/neovim/issues/12587
+  use 'antoinemadec/FixCursorHold.nvim'
 end)
