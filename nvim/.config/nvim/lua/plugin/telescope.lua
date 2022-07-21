@@ -33,7 +33,6 @@ telescope.setup {
     buffers = {
       attach_mappings = fixfolds,
       sort_lastused = true,
-      show_all_buffers = true,
       mappings = {
         i = { ['<c-d>'] = 'delete_buffer' },
         n = { ['<c-d>'] = 'delete_buffer' },
