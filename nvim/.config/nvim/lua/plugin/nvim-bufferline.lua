@@ -29,6 +29,8 @@ vim.keymap.set('n', '<leader>b8', '<cmd>BufferLineGoToBuffer 8<cr>', { desc = 'g
 vim.keymap.set('n', '<leader>b9', '<cmd>BufferLineGoToBuffer 9<cr>', { desc = 'goto 9' })
 vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous buffer' })
 vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<leader>bp', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous buffer' })
+vim.keymap.set('n', '<leader>bn', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next buffer' })
 
 local success, wk = pcall(require, 'which-key')
 if not success then
