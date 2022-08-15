@@ -12,7 +12,7 @@ require('bufferline').setup {
   },
   highlights = {
     indicator_selected = {
-      guifg = colors.blue.gui,
+      fg = colors.blue.gui,
     },
   },
 }
