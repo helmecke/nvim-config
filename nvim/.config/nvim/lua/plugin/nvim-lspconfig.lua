@@ -226,7 +226,10 @@ lspconfig.yamlls.setup {
         kubernetes = {
           '/tmp/kubectl-edit-*.yaml',
         },
-        ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible.json#/$defs/playbook'] = 'playbook*.{yml,yaml}',
+        ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible.json#/$defs/playbook'] = {
+          'playbook*.{yml,yaml}',
+          'converge.{yml,yaml}',
+        },
         ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible.json#/$defs/tasks'] = '{tasks,handlers}/*.{yml,yaml}',
         ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-requirements.json'] = 'requirements.{yml,yaml}',
         ['https://raw.githubusercontent.com/ansible/schemas/main/f/ansible-meta.json'] = 'meta/main.yml',
