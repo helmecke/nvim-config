@@ -2,7 +2,9 @@ local colors = require 'onedark.colors'
 
 require('bufferline').setup {
   options = {
-    indicator_icon = '▍',
+    indicator = {
+      icon = '▍',
+    },
     offsets = { { filetype = 'NvimTree', text = 'File Explorer', highlight = 'Directory', text_align = 'left' } },
     show_close_icon = false,
     show_buffer_close_icons = false,
