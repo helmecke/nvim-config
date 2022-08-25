@@ -198,4 +198,14 @@ return packer.startup(function()
   }
   -- bug in CursorHold and CursorHoldI https://github.com/neovim/neovim/issues/12587
   use 'antoinemadec/FixCursorHold.nvim'
+  use {
+    'kylechui/nvim-surround',
+    config = function()
+      require('nvim-surround').setup {
+        highlight = {
+          duration = false,
+        },
+      }
+    end,
+  }
 end)
