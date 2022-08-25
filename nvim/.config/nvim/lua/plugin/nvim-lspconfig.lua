@@ -24,6 +24,10 @@ local custom_attach = function(client, bufnr)
     return
   end
 
+  if vim.bo[bufnr].filetype == 'yaml.helm' then
+    vim.diagnostic.disable()
+  end
+
   -- Set log level
   --    See `:lua vim.cmd('e'..vim.lsp.get_log_path())`
   vim.lsp.set_log_level 'info'
