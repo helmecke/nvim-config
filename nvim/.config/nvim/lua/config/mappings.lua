@@ -50,3 +50,5 @@ vim.keymap.set('v', '<c-C>', '"+y', { desc = 'yank to clipboard' })
 vim.keymap.set('n', '<leader>p', '"+p', { desc = 'paste from clipboard below' })
 vim.keymap.set('n', '<leader>P', '"+P', { desc = 'paste from clipboard abow' })
 vim.keymap.set('v', '<leader>p', '"+p', { desc = 'paste from clipboard' })
+
+vim.keymap.set('n', 'gx', '<cmd>silent execute "!xdg-open " . shellescape("<cWORD>")<CR>')
