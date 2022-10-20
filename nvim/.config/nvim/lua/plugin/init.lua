@@ -113,8 +113,7 @@ return packer.startup(function()
     ft = { 'markdown', 'vimwiki' },
   }
   use {
-    'NTBBloodbath/rest.nvim',
-    commit = 'e5f68db',
+    'rest-nvim/rest.nvim',
     requires = { 'nvim-lua/plenary.nvim' },
     config = [[require'plugin.rest']], -- ./rest.lua
   }
