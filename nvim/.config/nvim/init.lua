@@ -14,7 +14,7 @@ local default_plugins = {
   -- 'netrw', -- needed for fugitives :GB
   'netrwPlugin',
   'netrwSettings',
-  'netrwFileHandlers',
+  -- 'netrwFileHandlers', -- needed for fugitives :GB
   'matchit',
   'tar',
   'tarPlugin',
