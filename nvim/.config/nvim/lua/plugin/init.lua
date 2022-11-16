@@ -198,11 +198,26 @@ return packer.startup(function()
   -- bug in CursorHold and CursorHoldI https://github.com/neovim/neovim/issues/12587
   use 'antoinemadec/FixCursorHold.nvim'
   use {
+    'ggandor/leap.nvim',
+    config = function()
+      require('leap').add_default_mappings()
+    end,
+  }
+  use {
     'kylechui/nvim-surround',
     config = function()
       require('nvim-surround').setup {
-        highlight = {
-          duration = false,
+        keymaps = {
+          insert = '<C-g>r',
+          insert_line = '<C-g>R',
+          normal = 'yr',
+          normal_cur = 'yrr',
+          normal_line = 'yR',
+          normal_cur_line = 'yRR',
+          visual = 'R',
+          visual_line = 'gR',
+          delete = 'dr',
+          change = 'cr',
         },
       }
     end,
