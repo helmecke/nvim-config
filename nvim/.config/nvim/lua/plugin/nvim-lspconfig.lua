@@ -343,6 +343,9 @@ null_ls.setup {
   sources = {
     null_ls.builtins.code_actions.gitsigns,
     null_ls.builtins.code_actions.shellcheck,
+    null_ls.builtins.diagnostics.commitlint.with {
+      extra_args = { '-g', vim.fn.expand '~/.config/commitlint/config.js' },
+    },
     null_ls.builtins.diagnostics.shellcheck,
     null_ls.builtins.diagnostics.yamllint,
     null_ls.builtins.formatting.stylua,
