@@ -119,17 +119,14 @@ local custom_attach = function(client, bufnr)
   -- ['textDocument/references'] = { 'referencesProvider' },
 
   if client.server_capabilities.documentRangeFormattingProvider then
-    vim.keymap.set('v', '<leader>lf', vim.lsp.buf.range_formatting, { desc = 'format', buffer = bufnr })
+    vim.keymap.set('v', '<leader>lf', vim.lsp.buf.format, { desc = 'format', buffer = bufnr })
   end
 
   if client.server_capabilities.documentFormattingProvider then
-    vim.keymap.set('n', '<leader>lf', vim.lsp.buf.formatting, { desc = 'format', buffer = bufnr })
+    vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = 'format', buffer = bufnr })
 
     local group = vim.api.nvim_create_augroup(('_lsp_formatting_%d'):format(bufnr), { clear = true })
-    vim.api.nvim_create_autocmd(
-      'BufWritePre',
-      { callback = vim.lsp.buf.formatting_sync, group = group, buffer = bufnr }
-    )
+    vim.api.nvim_create_autocmd('BufWritePre', { callback = vim.lsp.buf.format, group = group, buffer = bufnr })
   end
 
   -- ['textDocument/completion'] = { 'completionProvider' },
