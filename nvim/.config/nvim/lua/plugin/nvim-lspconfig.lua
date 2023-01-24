@@ -28,6 +28,10 @@ local custom_attach = function(client, bufnr)
     vim.diagnostic.disable()
   end
 
+  if vim.bo[bufnr].filetype == 'gotmpl' then
+    return
+  end
+
   -- Set log level
   --    See `:lua vim.cmd('e'..vim.lsp.get_log_path())`
   vim.lsp.set_log_level 'info'
@@ -221,6 +225,13 @@ lspconfig.yamlls.setup {
   on_attach = custom_attach,
   on_exit = custom_exit,
   capabilities = capabilities,
+  root_dir = function(filename, bufnr)
+    if string.find(filename, 'templates/') then
+      return nil
+    end
+    return require('lspconfig.server_configurations.yamlls').default_config.root_dir(filename, bufnr)
+  end,
+  single_file_support = false,
   settings = {
     yaml = {
       schemas = {
