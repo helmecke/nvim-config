@@ -1,1 +1,6 @@
-vim.cmd 'autocmd BufRead,BufNewFile *.conf set filetype=conf'
+local group = vim.api.nvim_create_augroup('filetypedetect', { clear = false })
+
+vim.api.nvim_create_autocmd(
+  { 'BufRead', 'BufNewFile' },
+  { group = group, pattern = '*.conf', command = 'setl ft=conf' }
+)
