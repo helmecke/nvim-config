@@ -96,4 +96,5 @@ wk.register {
       },
     },
   },
+  mode = { 'n', 'v' },
 }
