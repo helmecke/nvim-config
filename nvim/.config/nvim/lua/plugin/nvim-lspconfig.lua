@@ -98,7 +98,6 @@ local custom_attach = function(client, bufnr)
 
   if client.server_capabilities.codeActionProvider then
     vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'code action', buffer = bufnr })
-    vim.keymap.set('v', '<leader>la', vim.lsp.buf.range_code_action, { desc = 'code action', buffer = bufnr })
   end
 
   if client.server_capabilities.codeLensProvider then
