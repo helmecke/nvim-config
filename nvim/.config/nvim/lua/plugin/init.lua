@@ -107,6 +107,16 @@ return packer.startup(function()
     },
   }
   use {
+    'princejoogie/dir-telescope.nvim',
+    requires = { 'nvim-telescope/telescope.nvim' },
+    config = function()
+      require('dir-telescope').setup {
+        hidden = false,
+        respect_gitignore = true,
+      }
+    end,
+  }
+  use {
     'iamcco/markdown-preview.nvim',
     setup = [[require'plugin.markdown-preview']], -- ./markdown-preview.lua
     run = 'cd app & npm install',

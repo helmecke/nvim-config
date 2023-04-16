@@ -59,6 +59,7 @@ telescope.load_extension 'gh'
 telescope.load_extension 'ghq'
 telescope.load_extension 'git_worktree'
 telescope.load_extension 'ui-select'
+telescope.load_extension 'dir'
 
 vim.keymap.set('n', '<a-g>', '<cmd>Telescope ghq list<cr>')
 vim.keymap.set('n', '<leader>bb', '<cmd>Telescope buffers<cr>', { desc = 'find' })
