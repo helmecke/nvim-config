@@ -1,4 +1,3 @@
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
 
 require('nvim-tree').setup {
   disable_netrw = false,
@@ -26,13 +25,6 @@ require('nvim-tree').setup {
         folder = true,
         file = true,
         folder_arrow = true,
-      },
-    },
-  },
-  view = {
-    mappings = {
-      list = {
-        { key = 'gq', cb = tree_cb 'close' },
       },
     },
   },
