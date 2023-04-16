@@ -232,4 +232,8 @@ return packer.startup(function()
       }
     end,
   }
+  use {
+    'junegunn/vim-easy-align',
+    config = [[require'plugin.vim-easy-align']], -- ./vim-easy-align.lua
+  }
 end)
