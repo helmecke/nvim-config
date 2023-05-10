@@ -74,6 +74,7 @@ return packer.startup(function()
   }
   use {
     'hrsh7th/nvim-cmp',
+    commit = '8b76965',
     config = [[require'plugin.nvim-cmp']], -- ./nvim-cmp.lua
     requires = {
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
