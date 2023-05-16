@@ -41,7 +41,6 @@ cmp.setup {
     }),
   },
   sources = {
-    { name = 'copilot' },
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     {
@@ -72,7 +71,6 @@ cmp.setup {
         path = '[Path]',
         spell = '[Spell]',
         neorg = '[Neorg]',
-        copilot = '[Copilot]',
       },
     },
   },

@@ -83,7 +83,7 @@ return packer.startup(function()
       { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
       { 'f3fora/cmp-spell', after = 'nvim-cmp' },
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-      { 'onsails/lspkind-nvim', config = [[require'plugin.lspkind']] }, -- ./lspkind.lua
+      { 'onsails/lspkind-nvim' },
     },
   }
   use {
@@ -236,23 +236,5 @@ return packer.startup(function()
   use {
     'junegunn/vim-easy-align',
     config = [[require'plugin.vim-easy-align']], -- ./vim-easy-align.lua
-  }
-  use {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    config = function()
-      require('copilot').setup {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      }
-    end,
-  }
-  use {
-    'zbirenbaum/copilot-cmp',
-    after = { 'copilot.lua' },
-    config = function()
-      require('copilot_cmp').setup()
-    end,
   }
 end)
