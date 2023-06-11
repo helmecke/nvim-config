@@ -1,82 +1,85 @@
-local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
-
-if not packer_exists then
-  if vim.fn.input 'Download Packer? (y for yes)' ~= 'y' then
-    return
-  end
-
-  local directory = string.format('%s/site/pack/packer/opt/', vim.fn.stdpath 'data')
-
-  vim.fn.mkdir(directory, 'p')
-
-  local out = vim.fn.system(
-    string.format('git clone %s %s', 'https://github.com/wbthomason/packer.nvim', directory .. '/packer.nvim')
-  )
-
-  print(out)
-  print 'Downloading packer.nvim...'
-
-  return
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer = require 'packer'
-local use = packer.use
-
-return packer.startup(function()
-  -- Packer can manage itself as an optional plugin
-  use { 'wbthomason/packer.nvim', opt = true }
-  use { 'lewis6991/impatient.nvim' }
-  use {
+require('lazy').setup {
+  { 'folke/lazy.nvim', branch = 'stable' },
+  'lewis6991/impatient.nvim',
+  {
     'helmecke/onedark.nvim',
+    priority = 1000,
     config = function()
       vim.cmd 'colorscheme onedark'
     end,
-  }
-  use {
+  },
+  {
     'tpope/vim-fugitive',
     tag = 'v3.7',
-    config = [[require'plugin.fugitive']], -- ./fugitive.lua
-    requires = {
+    config = function()
+      require 'plugin.fugitive' -- ./fugitive.lua
+    end,
+    dependencies = {
       'tpope/vim-rhubarb',
       {
         'shumphrey/fugitive-gitlab.vim',
-        config = [[require'plugin.fugitive-gitlab']], -- ./fugitive-gitlab.lua
+        config = function()
+          require 'plugin.fugitive-gitlab' -- ./fugitive-gitlab.lua
+        end,
       },
     },
-  }
-  use {
+  },
+  {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    config = [[require'plugin.treesitter']], -- ./treesitter.lua
-    requires = {
+    config = function()
+      require 'plugin.treesitter' -- ./treesitter.lua
+    end,
+    dependencies = {
       'nvim-treesitter/playground',
     },
-  }
-  use {
+  },
+  {
     'moll/vim-bbye',
-    config = [[require'plugin.bbye']], -- ./bbye.lua
-  }
-  use {
+    config = function()
+      require 'plugin.bbye' -- ./bbye.lua
+    end,
+  },
+  {
     'kyazdani42/nvim-tree.lua',
-    config = [[require'plugin.nvim-tree']], -- ./nvim-tree.lua
-    requires = {
+    config = function()
+      require 'plugin.nvim-tree' -- ./nvim-tree.lua
+    end,
+    dependencies = {
       'kyazdani42/nvim-web-devicons',
     },
-  }
-  use {
+  },
+  {
     'neovim/nvim-lspconfig',
-    config = [[require'plugin.nvim-lspconfig']], -- ./nvim-lspconfig.lua
+    config = function()
+      require 'plugin.nvim-lspconfig' -- ./nvim-lspconfig.lua
+    end,
     after = 'nvim-cmp',
-  }
-  use {
+  },
+  {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-  }
-  use {
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
+  {
     'hrsh7th/nvim-cmp',
     commit = '8b76965',
-    config = [[require'plugin.nvim-cmp']], -- ./nvim-cmp.lua
-    requires = {
+    config = function()
+      require 'plugin.nvim-cmp' -- ./nvim-cmp.lua
+    end,
+    dependencies = {
       { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp' },
@@ -85,16 +88,20 @@ return packer.startup(function()
       { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       { 'onsails/lspkind-nvim' },
     },
-  }
-  use {
+  },
+  {
     'L3MON4D3/LuaSnip',
-    config = [[require'plugin.luasnip']], -- ./luasnip.lua
-    requires = 'rafamadriz/friendly-snippets',
-  }
-  use {
+    config = function()
+      require 'plugin.luasnip' -- ./luasnip.lua
+    end,
+    dependencies = 'rafamadriz/friendly-snippets',
+  },
+  {
     'nvim-telescope/telescope.nvim',
-    config = [[require'plugin.telescope']], -- ./telescope.lua
-    requires = {
+    config = function()
+      require 'plugin.telescope' -- ./telescope.lua
+    end,
+    dependencies = {
       'nvim-lua/popup.nvim',
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-github.nvim',
@@ -106,62 +113,78 @@ return packer.startup(function()
         branch = 'refactor',
       },
     },
-  }
-  use {
+  },
+  {
     'princejoogie/dir-telescope.nvim',
-    requires = { 'nvim-telescope/telescope.nvim' },
+    dependencies = { 'nvim-telescope/telescope.nvim' },
     config = function()
       require('dir-telescope').setup {
         hidden = false,
         respect_gitignore = true,
       }
     end,
-  }
-  use {
+  },
+  {
     'iamcco/markdown-preview.nvim',
-    setup = [[require'plugin.markdown-preview']], -- ./markdown-preview.lua
+    setup = function()
+      require 'plugin.markdown-preview' -- ./markdown-preview.lua
+    end,
     run = 'cd app & npm install',
     ft = { 'markdown', 'vimwiki' },
-  }
-  use {
+  },
+  {
     'rest-nvim/rest.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = [[require'plugin.rest']], -- ./rest.lua
-  }
-  use {
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require 'plugin.rest' -- ./rest.lua
+    end,
+  },
+  {
     'windwp/nvim-autopairs',
-    config = [[require'plugin.nvim-autopairs']], -- ./nvim-autopairs.lua
-    requires = { 'nvim-cmp' },
-  }
-  use {
+    config = function()
+      require 'plugin.nvim-autopairs' -- ./nvim-autopairs.lua
+    end,
+    dependencies = { 'nvim-cmp' },
+  },
+  {
     'akinsho/nvim-bufferline.lua',
-    config = [[require'plugin.nvim-bufferline']], -- ./nvim-bufferline.lua
-    requires = 'kyazdani42/nvim-web-devicons',
-  }
-  use {
+    config = function()
+      require 'plugin.nvim-bufferline' -- ./nvim-bufferline.lua
+    end,
+    dependencies = 'kyazdani42/nvim-web-devicons',
+  },
+  {
     'nvim-lualine/lualine.nvim',
-    config = [[require'plugin.lualine']], -- ./lualine.lua
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-  }
-  use {
+    config = function()
+      require 'plugin.lualine' -- ./lualine.lua
+    end,
+    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+  },
+  {
     'norcalli/nvim-colorizer.lua',
-    config = [[require'plugin.nvim-colorizer']], -- ./nvim-colorizer.lua
-  }
-  use {
+    config = function()
+      require 'plugin.nvim-colorizer' -- ./nvim-colorizer.lua
+    end,
+  },
+  {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end,
-  }
-  use {
+  },
+  {
     'folke/which-key.nvim',
-    config = [[require'plugin.which-key']], -- ./which-key.lua
-  }
-  use {
+    config = function()
+      require 'plugin.which-key' -- ./which-key.lua
+    end,
+  },
+  {
     'folke/zen-mode.nvim',
-    config = [[require'plugin.zen-mode']], -- ./zen-mode.lua
-  }
-  use {
+    config = function()
+      require 'plugin.zen-mode' -- ./zen-mode.lua
+    end,
+  },
+  {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       require('indent_blankline').setup {
@@ -171,50 +194,60 @@ return packer.startup(function()
         show_first_indent_level = false,
       }
     end,
-  }
-  use {
+  },
+  {
     'ray-x/lsp_signature.nvim',
-  }
-  use {
+  },
+  {
     'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = [[require'plugin.gitsigns']], -- ./gitsigns.lua
-  }
-  use {
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require 'plugin.gitsigns' -- ./gitsigns.lua
+    end,
+  },
+  {
     'folke/todo-comments.nvim',
-    config = [[require'plugin.todo-comments']], -- ./todo-comments.lua
-    requires = {
+    config = function()
+      require 'plugin.todo-comments' -- ./todo-comments.lua
+    end,
+    dependencies = {
       'nvim-lua/plenary.nvim',
     },
-  }
-  use {
+  },
+  {
     'stevearc/qf_helper.nvim',
-    config = [[require'plugin.qf_helper']], -- ./qf_helper.lua
-  }
-  use {
+    config = function()
+      require 'plugin.qf_helper' -- ./qf_helper.lua
+    end,
+  },
+  {
     'anuvyklack/pretty-fold.nvim',
     config = function()
       require('pretty-fold').setup {}
     end,
-  }
-  use {
+  },
+  {
     'mickael-menu/zk-nvim',
-    config = [[require'plugin.zk-nvim']], -- ./zk-nvim.lua
-  }
-  use {
+    config = function()
+      require 'plugin.zk-nvim' -- ./zk-nvim.lua
+    end,
+  },
+  {
     'Shatur/neovim-session-manager',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = [[require'plugin.session-manager']], -- ./session-manager.lua
-  }
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require 'plugin.session-manager' -- ./session-manager.lua
+    end,
+  },
   -- bug in CursorHold and CursorHoldI https://github.com/neovim/neovim/issues/12587
-  use 'antoinemadec/FixCursorHold.nvim'
-  use {
+  'antoinemadec/FixCursorHold.nvim',
+  {
     'ggandor/leap.nvim',
     config = function()
       require('leap').add_default_mappings()
     end,
-  }
-  use {
+  },
+  {
     'kylechui/nvim-surround',
     config = function()
       require('nvim-surround').setup {
@@ -232,9 +265,11 @@ return packer.startup(function()
         },
       }
     end,
-  }
-  use {
+  },
+  {
     'junegunn/vim-easy-align',
-    config = [[require'plugin.vim-easy-align']], -- ./vim-easy-align.lua
-  }
-end)
+    config = function()
+      require 'plugin.vim-easy-align' -- ./vim-easy-align.lua
+    end,
+  },
+}
