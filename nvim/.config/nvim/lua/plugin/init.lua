@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup {
-  { 'folke/lazy.nvim', branch = 'stable' },
+  { 'folke/lazy.nvim', tag = 'stable' },
   'lewis6991/impatient.nvim',
   {
     'helmecke/onedark.nvim',
