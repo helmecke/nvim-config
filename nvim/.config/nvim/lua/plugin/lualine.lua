@@ -309,7 +309,7 @@ local config = {
       },
       filetypes = { 'fugitive' },
     },
-    'quickfix',
+    -- 'quickfix',
     { sections = {}, filetypes = { 'NvimTree' } },
   },
 }
