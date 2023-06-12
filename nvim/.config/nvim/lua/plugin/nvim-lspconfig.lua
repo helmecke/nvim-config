@@ -173,11 +173,7 @@ end
 
 lspconfig.terraformls.setup {
   on_init = custom_init,
-  on_attach = function(client, bufnr)
-    -- INFO: not yet supported https://github.com/hashicorp/terraform-ls/issues/857
-    client.server_capabilities.signatureHelpProvider = false
-    custom_attach(client, bufnr)
-  end,
+  on_attach = custom_attach,
   on_exit = custom_exit,
   capabilities = capabilities,
 }
