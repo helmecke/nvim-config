@@ -39,7 +39,7 @@ require('lazy').setup {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       require 'plugin.treesitter' -- ./treesitter.lua
     end,
@@ -67,7 +67,6 @@ require('lazy').setup {
     config = function()
       require 'plugin.nvim-lspconfig' -- ./nvim-lspconfig.lua
     end,
-    after = 'nvim-cmp',
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
@@ -75,18 +74,18 @@ require('lazy').setup {
   },
   {
     'hrsh7th/nvim-cmp',
-    commit = '8b76965',
+    commit = '1cad30f', -- https://github.com/hrsh7th/nvim-cmp/pull/1563
     config = function()
       require 'plugin.nvim-cmp' -- ./nvim-cmp.lua
     end,
     dependencies = {
-      { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-      { 'f3fora/cmp-spell', after = 'nvim-cmp' },
-      { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
-      { 'onsails/lspkind-nvim' },
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'f3fora/cmp-spell',
+      'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind-nvim',
     },
   },
   {
@@ -126,10 +125,10 @@ require('lazy').setup {
   },
   {
     'iamcco/markdown-preview.nvim',
-    setup = function()
+    init = function()
       require 'plugin.markdown-preview' -- ./markdown-preview.lua
     end,
-    run = 'cd app & npm install',
+    build = 'cd app & npm install',
     ft = { 'markdown', 'vimwiki' },
   },
   {
@@ -158,7 +157,7 @@ require('lazy').setup {
     config = function()
       require 'plugin.lualine' -- ./lualine.lua
     end,
-    dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
+    dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true },
   },
   {
     'norcalli/nvim-colorizer.lua',
