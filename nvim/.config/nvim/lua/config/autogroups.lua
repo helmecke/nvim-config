@@ -16,3 +16,14 @@ local autogroups = {
 }
 
 util.create_augroup(autogroups)
+
+-- https://github.com/kovidgoyal/kitty/issues/6173
+-- https://github.com/kovidgoyal/kitty/discussions/4869
+local group = vim.api.nvim_create_augroup('_kitty_cwd_fix', { clear = true })
+vim.api.nvim_create_autocmd({ 'DirChanged' }, {
+  pattern = '*',
+  callback = function()
+    vim.cmd [[ call chansend(v:stderr, printf("\033]7;file://%s\033\\", v:event.cwd)) ]]
+  end,
+  group = group,
+})
