@@ -271,4 +271,11 @@ require('lazy').setup {
       require 'plugin.vim-easy-align' -- ./vim-easy-align.lua
     end,
   },
+  {
+    'williamboman/mason.nvim',
+    build = ':MasonUpdate', -- :MasonUpdate updates registry contents
+    config = function()
+      require('mason').setup()
+    end,
+  },
 }
