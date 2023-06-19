@@ -1,173 +1,97 @@
 require('neorg').setup {
   load = {
     ['core.defaults'] = {},
+    ['core.concealer'] = {},
+    ['core.dirman'] = {
+      config = {
+        workspaces = {
+          notes = '~/Documents/neorg',
+        },
+        default_workspace = 'notes',
+      },
+    },
     ['core.keybinds'] = {
       config = {
-        default_keybinds = false,
+        hook = function(keybinds)
+          keybinds.map_event(
+            'norg',
+            'n',
+            '<localleader>c',
+            'core.looking-glass.magnify-code-block',
+            { desc = 'code block' }
+          )
+          keybinds.map_event('norg', 'n', '<C-s>', 'core.integrations.telescope.find_linkable')
+          keybinds.map_event('norg', 'i', '<C-l>', 'core.integrations.telescope.insert_link')
+          keybinds.map('all', 'n', '<leader>nq', '<cmd>Neorg return<cr>', { desc = 'return' })
+          keybinds.map('norg', 'n', '<localleader>t', '<cmd>Neorg toc<cr>', { desc = 'return' })
+        end,
       },
     },
-    ['core.norg.concealer'] = {
-      config = {
-        markup_preset = 'conceal',
-      },
-    },
-    ['core.norg.completion'] = {
+    ['core.completion'] = {
       config = {
         engine = 'nvim-cmp',
       },
     },
-    ['core.norg.dirman'] = {
+    ['core.summary'] = {},
+    ['core.esupports.metagen'] = {
       config = {
-        workspaces = {
-          personal = '~/Documents/neorg',
-          gtd = '~/Documents/gtd',
+        type = 'auto',
+        template = {
+          {
+            'title',
+            function()
+              return vim.fn.expand '%:p:t:r'
+            end,
+          },
+          { 'description', '' },
+          { 'categories', '' },
+          {
+            'authors',
+            function()
+              return 'Jakob Helmecke'
+            end,
+          },
+          {
+            'created',
+            function()
+              return os.date '%Y-%m-%d'
+            end,
+          },
+          {
+            'updated',
+            function()
+              return os.date '%Y-%m-%d'
+            end,
+          },
         },
-        autochdir = true,
-      },
-    },
-    ['core.gtd.base'] = {
-      config = {
-        workspace = 'gtd',
       },
     },
     ['core.integrations.telescope'] = {},
-    ['core.presenter'] = {
+    ['core.qol.toc'] = {
       config = {
-        zen_mode = 'zen-mode',
+        close_after_use = true,
       },
     },
-    ['core.norg.journal'] = {},
   },
-  hook = function()
-    local neorg_callbacks = require 'neorg.callbacks'
-    local leader = '<leader>'
-    local localleader = '<localleader>'
-
-    neorg_callbacks.on_event('core.keybinds.events.enable_keybinds', function(_, keybinds)
-      -- Map all the below keybinds only when the "norg" mode is active
-      keybinds.map_event_to_mode('norg', {
-        n = {
-          -- Keys for managing TODO items and setting their states
-          { localleader .. 'tu', 'core.norg.qol.todo_items.todo.task_undone' },
-          { localleader .. 'tp', 'core.norg.qol.todo_items.todo.task_pending' },
-          { localleader .. 'td', 'core.norg.qol.todo_items.todo.task_done' },
-          { localleader .. 'th', 'core.norg.qol.todo_items.todo.task_on_hold' },
-          { localleader .. 'tc', 'core.norg.qol.todo_items.todo.task_cancelled' },
-          { localleader .. 'tr', 'core.norg.qol.todo_items.todo.task_recurring' },
-          { localleader .. 'ti', 'core.norg.qol.todo_items.todo.task_important' },
-          { '<C-Space>', 'core.norg.qol.todo_items.todo.task_cycle' },
-
-          -- Keys for managing GTD
-          { localleader .. 'te', 'core.gtd.base.edit' },
-          { leader .. 'ne', 'core.gtd.base.edit' },
-
-          -- Keys for managing notes
-          { localleader .. 'nn', 'core.norg.dirman.new.note' },
-          { leader .. 'nn', 'core.norg.dirman.new.note' },
-
-          { '<CR>', 'core.norg.esupports.hop.hop-link' },
-          { '<M-CR>', 'core.norg.esupports.hop.hop-link', 'vsplit' },
-
-          { '<C-s>', 'core.integrations.telescope.find_linkable' },
-
-          -- TODO: rebind
-          -- { '<M-k>', 'core.norg.manoeuvre.item_up' },
-          -- { '<M-j>', 'core.norg.manoeuvre.item_down' },
-        },
-        i = {
-          { '<C-l>', 'core.integrations.telescope.insert_link' },
-        },
-        o = {
-          { 'ah', 'core.norg.manoeuvre.textobject.around-heading' },
-          { 'ih', 'core.norg.manoeuvre.textobject.inner-heading' },
-          { 'at', 'core.norg.manoeuvre.textobject.around-tag' },
-          { 'it', 'core.norg.manoeuvre.textobject.inner-tag' },
-          { 'al', 'core.norg.manoeuvre.textobject.around-whole-list' },
-        },
-      }, {
-        silent = true,
-        noremap = true,
-      })
-
-      -- Map the below keys only when traverse-heading mode is active
-      keybinds.map_event_to_mode('traverse-heading', {
-        n = {
-          -- Rebind j and k to move between headings in traverse-heading mode
-          { 'j', 'core.integrations.treesitter.next.heading' },
-          { 'k', 'core.integrations.treesitter.previous.heading' },
-        },
-      }, {
-        silent = true,
-        noremap = true,
-      })
-
-      -- Map the below keys on gtd displays
-      keybinds.map_event_to_mode('gtd-displays', {
-        n = {
-          { '<CR>', 'core.gtd.ui.goto_task' },
-
-          -- Keys for closing the current display
-          { 'q', 'core.gtd.ui.close' },
-          { '<Esc>', 'core.gtd.ui.close' },
-
-          { 'e', 'core.gtd.ui.edit_task' },
-          { '<Tab>', 'core.gtd.ui.details' },
-        },
-      }, {
-        silent = true,
-        noremap = true,
-        nowait = true,
-      })
-
-      -- Map the below keys on presenter mode
-      keybinds.map_event_to_mode('presenter', {
-        n = {
-          { '<CR>', 'core.presenter.next_page' },
-          { 'l', 'core.presenter.next_page' },
-          { 'h', 'core.presenter.previous_page' },
-
-          -- Keys for closing the current display
-          { 'q', 'core.presenter.close' },
-          { '<Esc>', 'core.presenter.close' },
-        },
-      }, {
-        silent = true,
-        noremap = true,
-        nowait = true,
-      })
-
-      -- Apply the below keys to all modes
-      keybinds.map_to_mode('all', {
-        n = {
-          { localleader .. 'mn', ':Neorg mode norg<CR>' },
-          { localleader .. 'mh', ':Neorg mode traverse-heading<CR>' },
-          { leader .. 'nmn', ':Neorg mode norg<CR>' },
-          { leader .. 'nmh', ':Neorg mode traverse-heading<CR>' },
-
-          -- Keys for managing journal
-          { localleader .. 'jm', ':Neorg journal tomorrow<CR>' },
-          { localleader .. 'jt', ':Neorg journal today<CR>' },
-          { localleader .. 'jy', ':Neorg journal yesterday<CR>' },
-          { leader .. 'njm', ':Neorg journal tomorrow<CR>' },
-          { leader .. 'njt', ':Neorg journal today<CR>' },
-          { leader .. 'njy', ':Neorg journal yesterday<CR>' },
-
-          -- Keys for managing presenter
-          { localleader .. 'ps', ':Neorg presenter start<CR>' },
-          { leader .. 'np', ':Neorg presenter start<CR>' },
-        },
-      }, {
-        silent = true,
-        noremap = true,
-      })
-    end)
-  end,
 }
 
-vim.cmd 'autocmd VimEnter * NeorgStart silent=true'
+local success, wk = pcall(require, 'which-key')
+if not success then
+  return
+end
 
-vim.keymap.set('n', '<leader>nc', '<cmd>Neorg gtd capture<cr>', { desc = 'capture' })
-vim.keymap.set('n', '<leader>nv', '<cmd>Neorg gtd views<cr>', { desc = 'view' })
-vim.keymap.set('n', '<leader>nwg', '<cmd>Neorg workspace gtd<cr>', { desc = 'gtd' })
-vim.keymap.set('n', '<leader>nwp', '<cmd>Neorg workspace personal<cr>', { desc = 'personal' })
-vim.keymap.set('n', '<leader>nww', '<cmd>Neorg workspace work<cr>', { desc = 'work' })
+wk.register {
+  ['<leader>'] = {
+    ['n'] = {
+      name = '+notes',
+    },
+    ['j'] = {
+      name = '+journal',
+    },
+  },
+}
+
+vim.keymap.set('n', '<leader>ni', '<cmd>Neorg index<cr>', { desc = 'index' })
+vim.keymap.set('n', '<leader>jj', '<cmd>Neorg journal today<cr>', { desc = 'today' })
+vim.keymap.set('n', '<leader>jy', '<cmd>Neorg journal yesterday<cr>', { desc = 'yesterday' })
+vim.keymap.set('n', '<leader>jt', '<cmd>Neorg journal tomorrow<cr>', { desc = 'tomorrow' })

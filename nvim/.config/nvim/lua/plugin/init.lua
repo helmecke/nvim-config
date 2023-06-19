@@ -227,6 +227,7 @@ require('lazy').setup {
   },
   {
     'mickael-menu/zk-nvim',
+    enabled = false,
     config = function()
       require 'plugin.zk-nvim' -- ./zk-nvim.lua
     end,
@@ -273,9 +274,20 @@ require('lazy').setup {
   },
   {
     'williamboman/mason.nvim',
-    build = ':MasonUpdate', -- :MasonUpdate updates registry contents
+    build = ':MasonUpdate',
     config = function()
       require('mason').setup()
+    end,
+  },
+  {
+    'nvim-neorg/neorg',
+    build = ':Neorg sync-parsers',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-neorg/neorg-telescope',
+    },
+    config = function()
+      require 'plugin.neorg' -- ./neorg.lua
     end,
   },
 }
