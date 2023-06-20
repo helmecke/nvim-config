@@ -44,13 +44,13 @@ require('neorg').setup {
             end,
           },
           { 'description', '' },
-          { 'categories', '' },
           {
             'authors',
             function()
               return 'Jakob Helmecke'
             end,
           },
+          { 'categories', '' },
           {
             'created',
             function()
@@ -63,6 +63,7 @@ require('neorg').setup {
               return os.date '%Y-%m-%d'
             end,
           },
+          { 'version', require('neorg.config').norg_version },
         },
       },
     },
