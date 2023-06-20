@@ -20,7 +20,6 @@ require('neorg').setup {
             'core.looking-glass.magnify-code-block',
             { desc = 'code block' }
           )
-          keybinds.map_event('norg', 'n', '<C-s>', 'core.integrations.telescope.find_linkable')
           keybinds.map_event('norg', 'i', '<C-l>', 'core.integrations.telescope.insert_link')
           keybinds.map('all', 'n', '<leader>nq', '<cmd>Neorg return<cr>', { desc = 'return' })
           keybinds.map('norg', 'n', '<localleader>t', '<cmd>Neorg toc<cr>', { desc = 'return' })
@@ -89,6 +88,9 @@ wk.register {
     ['j'] = {
       name = '+journal',
     },
+    ['s'] = {
+      name = '+search',
+    },
   },
 }
 
@@ -96,3 +98,5 @@ vim.keymap.set('n', '<leader>ni', '<cmd>Neorg index<cr>', { desc = 'index' })
 vim.keymap.set('n', '<leader>jj', '<cmd>Neorg journal today<cr>', { desc = 'today' })
 vim.keymap.set('n', '<leader>jy', '<cmd>Neorg journal yesterday<cr>', { desc = 'yesterday' })
 vim.keymap.set('n', '<leader>jt', '<cmd>Neorg journal tomorrow<cr>', { desc = 'tomorrow' })
+vim.keymap.set('n', '<leader>sn', '<cmd>Telescope neorg find_norg_files<cr>', { desc = 'tomorrow' })
+vim.keymap.set('n', '<leader>sh', '<cmd>Telescope neorg find_linkable<cr>', { desc = 'tomorrow' })
