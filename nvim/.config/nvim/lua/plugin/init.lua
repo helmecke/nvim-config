@@ -54,12 +54,12 @@ require('lazy').setup {
     end,
   },
   {
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     config = function()
       require 'plugin.nvim-tree' -- ./nvim-tree.lua
     end,
     dependencies = {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
   },
   {
@@ -150,14 +150,14 @@ require('lazy').setup {
     config = function()
       require 'plugin.nvim-bufferline' -- ./nvim-bufferline.lua
     end,
-    dependencies = 'kyazdani42/nvim-web-devicons',
+    dependencies = 'nvim-tree/nvim-web-devicons',
   },
   {
     'nvim-lualine/lualine.nvim',
     config = function()
       require 'plugin.lualine' -- ./lualine.lua
     end,
-    dependencies = { 'kyazdani42/nvim-web-devicons', lazy = true },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   {
     'norcalli/nvim-colorizer.lua',
