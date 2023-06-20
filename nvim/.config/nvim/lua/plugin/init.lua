@@ -188,7 +188,7 @@ require('lazy').setup {
     config = function()
       require('indent_blankline').setup {
         buftype_exclude = { 'terminal' },
-        filetype_exclude = { 'help', 'packer', 'NvimTree', 'alpha' },
+        filetype_exclude = { 'help', 'packer', 'NvimTree', 'alpha', 'norg' },
         show_current_context = true,
         show_first_indent_level = false,
       }
