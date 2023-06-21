@@ -290,4 +290,11 @@ require('lazy').setup {
       require 'plugin.neorg' -- ./neorg.lua
     end,
   },
+  {
+    'stevearc/oil.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require 'plugin.oil' -- ./oil.lua
+    end,
+  },
 }
