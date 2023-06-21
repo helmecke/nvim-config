@@ -83,4 +83,18 @@ vim.keymap.set('n', '<leader>sj', '<cmd>Telescope jumplist<cr>', { desc = 'jumpl
 vim.keymap.set('n', '<leader>sm', '<cmd>Telescope man_pages<cr>', { desc = 'man page' })
 vim.keymap.set('n', '<leader>sq', '<cmd>Telescope quickfix<cr>', { desc = 'quickfix' })
 vim.keymap.set('n', '<leader>ss', '<cmd>Telescope live_grep<cr>', { desc = 'string' })
+vim.keymap.set('n', '<leader>sS', function()
+  -- Clone the default Telescope configuration
+  local vimgrep_arguments = { unpack(require('telescope.config').values.vimgrep_arguments) }
+
+  -- I want to search in hidden/dot files.
+  table.insert(vimgrep_arguments, '--hidden')
+  -- I don't want to search in the `.git` directory.
+  table.insert(vimgrep_arguments, '--glob')
+  table.insert(vimgrep_arguments, '!**/.git/*')
+
+  require('telescope.builtin').live_grep { vimgrep_arguments = vimgrep_arguments }
+end, {
+  desc = 'string(hidden)',
+})
 vim.keymap.set('n', '<leader>sw', '<cmd>Telescope vimwiki live_grep<cr>', { desc = 'wiki' })
