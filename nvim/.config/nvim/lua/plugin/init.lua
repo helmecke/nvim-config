@@ -235,6 +235,7 @@ require('lazy').setup {
   },
   {
     'Shatur/neovim-session-manager',
+    enabled = false,
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require 'plugin.session-manager' -- ./session-manager.lua

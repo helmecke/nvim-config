@@ -23,7 +23,6 @@
   "mason.nvim": { "branch": "main", "commit": "664c987c3b14d2262a4e580f993a3e5045baded0" },
   "neorg": { "branch": "main", "commit": "6fece1546d051a5f2a2d932d5978beec1ef920ab" },
   "neorg-telescope": { "branch": "main", "commit": "d24f445c912451ddbf17cbe8da36561b51b10d39" },
-  "neovim-session-manager": { "branch": "master", "commit": "fd92e73506601a48adb843cdc0a15f2e63513754" },
   "null-ls.nvim": { "branch": "main", "commit": "bbaf5a96913aa92281f154b08732be2f57021c45" },
   "nvim-autopairs": { "branch": "master", "commit": "e8f7dd7a72de3e7b6626c050a802000e69d53ff0" },
   "nvim-bufferline.lua": { "branch": "main", "commit": "60734264a8655a7db3595159fb50076dc24c2f2c" },
