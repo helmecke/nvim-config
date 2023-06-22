@@ -69,7 +69,6 @@ vim.keymap.set('n', '<leader>fF', function()
 end, {
   desc = 'find(hidden)',
 })
-vim.keymap.set('n', '<leader>fw', '<cmd>Telescope vimwiki vimwiki<cr>', { desc = 'wiki' })
 vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'recent' })
 vim.keymap.set('n', '<leader>gb', '<cmd>Telescope git_branches<cr>', { desc = 'branch' })
 vim.keymap.set('n', '<leader>gC', '<cmd>Telescope git_bcommits<cr>', { desc = 'buffer commit' })
@@ -97,4 +96,3 @@ vim.keymap.set('n', '<leader>sS', function()
 end, {
   desc = 'string(hidden)',
 })
-vim.keymap.set('n', '<leader>sw', '<cmd>Telescope vimwiki live_grep<cr>', { desc = 'wiki' })
