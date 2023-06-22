@@ -5,9 +5,16 @@ require('neorg').setup {
     ['core.dirman'] = {
       config = {
         workspaces = {
-          notes = '~/Documents/neorg',
+          notes = '~/Documents/notes',
+          journal = '~/Documents/journal',
         },
         default_workspace = 'notes',
+      },
+    },
+    ['core.journal'] = {
+      config = {
+        workspace = 'journal',
+        journal_folder = '',
       },
     },
     ['core.keybinds'] = {
