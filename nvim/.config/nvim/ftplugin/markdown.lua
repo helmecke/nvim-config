@@ -4,8 +4,12 @@ vim.bo.tabstop = 2
 
 vim.keymap.set('n', '<localleader>p', '<Plug>MarkdownPreviewToggle', { buffer = true })
 
+local success, zk_util = pcall(require, 'zk.util')
+if not success then
+  return
+end
 -- Add the key mappings only for Markdown files in a zk notebook.
-if require('zk.util').notebook_root(vim.fn.expand '%:p') ~= nil then
+if zk_util.notebook_root(vim.fn.expand '%:p') ~= nil then
   -- Open the link under the caret.
   vim.keymap.set('n', '<CR>', '<Cmd>lua vim.lsp.buf.definition()<CR>', { buffer = true })
 
