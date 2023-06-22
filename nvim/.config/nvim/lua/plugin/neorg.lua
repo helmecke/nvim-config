@@ -92,7 +92,7 @@ end
 wk.register {
   ['<leader>'] = {
     ['n'] = {
-      name = '+notes',
+      name = '+note',
     },
     ['j'] = {
       name = '+journal',
