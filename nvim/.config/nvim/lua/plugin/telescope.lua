@@ -95,3 +95,25 @@ vim.keymap.set('n', '<leader>sS', function()
 end, {
   desc = 'string(hidden)',
 })
+
+local success, wk = pcall(require, 'which-key')
+if not success then
+  return
+end
+
+wk.register {
+  ['<leader>'] = {
+    ['b'] = {
+      name = '+buffer',
+    },
+    ['f'] = {
+      name = '+file',
+    },
+    ['g'] = {
+      name = '+git',
+    },
+    ['s'] = {
+      name = '+search',
+    },
+  },
+}
