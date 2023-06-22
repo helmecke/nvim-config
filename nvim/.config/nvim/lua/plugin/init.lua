@@ -118,10 +118,7 @@ require('lazy').setup {
     'princejoogie/dir-telescope.nvim',
     dependencies = { 'nvim-telescope/telescope.nvim' },
     config = function()
-      require('dir-telescope').setup {
-        hidden = false,
-        respect_gitignore = true,
-      }
+      require 'plugin.telescope-dir' -- ./telescope-dir.lua
     end,
   },
   {
