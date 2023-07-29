@@ -1,39 +1,54 @@
-local indent = 4
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.bo.expandtab = true
-vim.bo.shiftwidth = indent
-vim.bo.smartindent = true
-vim.bo.tabstop = indent
+local opt = vim.opt
 
-vim.o.autowrite = true
-vim.o.swapfile = false
-vim.o.confirm = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.listchars = 'tab:» ,extends:›,precedes:‹,nbsp:·,trail:·,eol:¬'
-vim.o.hidden = true
-vim.o.scrolloff = 3
-vim.o.showbreak = '﬌ '
-vim.o.showmatch = true
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.wildmode = 'longest,full'
-vim.o.termguicolors = true
-vim.o.spellfile = table.concat({
-  vim.fn.expand '~/.local/share/nvim/site/spell/en.utf-8.add',
-  vim.fn.expand '~/.local/share/nvim/site/spell/de.utf-8.add',
-  vim.fn.expand '~/.local/share/nvim/site/spell/names.utf-8.add',
-}, ',')
-vim.o.spelllang = 'en,de,names'
-vim.o.title = true
-vim.o.titlestring = "nvim • %{join(split(substitute(getcwd(), $HOME, '~', ''), '/')[-1:], '')}"
-vim.o.mouse = 'nv'
-vim.o.updatetime = 250
-
-vim.wo.number = true
-vim.wo.relativenumber = true
-vim.wo.colorcolumn = '80'
-vim.wo.cursorline = true
-vim.wo.list = true
-vim.wo.spell = false
-vim.wo.conceallevel = 0
+opt.autowrite = true -- Enable auto write
+opt.clipboard = "unnamedplus" -- Sync with system clipboard
+opt.colorcolumn = "80"
+opt.completeopt = "menu,menuone,noselect"
+opt.conceallevel = 3 -- Hide * markup for bold and italic
+opt.confirm = true -- Confirm to save changes before exiting modified buffer
+opt.cursorline = true -- Enable highlighting of the current line
+opt.expandtab = true -- Use spaces instead of tabs
+opt.formatoptions = "jcroqlnt" -- tcqj
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+opt.hidden = true
+opt.ignorecase = true -- Ignore case
+opt.inccommand = "nosplit" -- preview incremental substitute
+opt.list = true -- Show some invisible characters (tabs...
+opt.listchars = "tab:» ,extends:›,precedes:‹,nbsp:·,trail:·,eol:¬"
+opt.mouse = "nv"
+opt.number = true -- Print line number
+opt.pumblend = 10 -- Popup blend
+opt.pumheight = 10 -- Maximum number of entries in a popup
+opt.relativenumber = true -- Relative line numbers
+opt.scrolloff = 4 -- Lines of context
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+opt.shiftround = true -- Round indent
+opt.shiftwidth = 2 -- Size of an indent
+opt.shortmess:append({ W = true, I = true, c = true })
+opt.showbreak = "> "
+opt.showmode = false -- Dont show mode since we have a statusline
+opt.sidescrolloff = 8 -- Columns of context
+opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+opt.smartcase = true -- Don't ignore case with capitals
+opt.smartindent = true -- Insert indents automatically
+opt.spell = false
+opt.spelllang = { "en" }
+opt.splitbelow = true -- Put new windows below current
+opt.splitright = true -- Put new windows right of current
+opt.tabstop = 2 -- Number of spaces tabs count for
+opt.termguicolors = true -- True color support
+opt.timeoutlen = 300
+opt.title = true
+opt.titlestring = "nvim • %{join(split(substitute(getcwd(), $HOME, '~', ''), '/')[-1:], '')}"
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200 -- Save swap file and trigger CursorHold
+opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.winminwidth = 5 -- Minimum window width
+opt.wrap = false -- Disable line wrap

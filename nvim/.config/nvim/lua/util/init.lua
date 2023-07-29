@@ -1,23 +1,54 @@
-local utils = {}
+local Util = require("lazy.core.util")
 
-function utils.create_augroup(definitions)
-  for _, definition in pairs(definitions) do
-    vim.cmd 'autocmd!'
-    for _, def in ipairs(definition) do
-      vim.cmd('autocmd ' .. def)
+local M = {}
+
+---@param plugin string
+---@return boolean
+function M.has(plugin)
+  return require("lazy.core.config").spec.plugins[plugin] ~= nil
+end
+
+---@param name string
+---@return table
+function M.opts(name)
+  local plugin = require("lazy.core.config").plugins[name]
+  if not plugin then
+    return {}
+  end
+  local Plugin = require("lazy.core.plugin")
+  return Plugin.values(plugin, "opts", false)
+end
+
+---@param silent boolean?
+---@param values? {[1]:any, [2]:any}
+function M.toggle(option, silent, values)
+  if values then
+    if vim.opt_local[option]:get() == values[1] then
+      vim.opt_local[option] = values[2]
+    else
+      vim.opt_local[option] = values[1]
     end
-    vim.cmd 'augroup END'
+    return Util.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
+  end
+  vim.opt_local[option] = not vim.opt_local[option]:get()
+  if not silent then
+    if vim.opt_local[option]:get() then
+      Util.info("Enabled " .. option, { title = "Option" })
+    else
+      Util.warn("Disabled " .. option, { title = "Option" })
+    end
   end
 end
 
-function utils.is_buffer_empty()
-  -- Check whether the current buffer is empty
-  return vim.fn.empty(vim.fn.expand '%:t') == 1
+---@param on_attach fun(client, buffer)
+function M.on_attach(on_attach)
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local buffer = args.buf
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      on_attach(client, buffer)
+    end,
+  })
 end
 
-function utils.has_width_gt(cols)
-  -- Check if the windows width is greater than a given number of columns
-  return vim.fn.winwidth(0) / 2 > cols
-end
-
-return utils
+return M
