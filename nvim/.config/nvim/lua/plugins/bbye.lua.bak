@@ -1,9 +1,0 @@
-return {
-  {
-    "moll/vim-bbye",
-    opts = {},
-    keys = {
-      { "<leader>bd", "<cmd>Bdelete<cr>", desc = "Delete buffer" },
-    },
-  },
-}
