@@ -101,8 +101,11 @@ return {
         has_cmp and cmp_nvim_lsp.default_capabilities() or {},
         opts.capabilities or {}
       )
-      local on_attach = function(_, bufnr)
-        ---comment
+      local on_attach = function(client, bufnr)
+        if vim.bo[bufnr].filetype == "gotmpl" then
+          vim.diagnostic.disable(bufnr)
+        end
+
         ---@param keys string
         ---@param func any
         ---@param desc string
