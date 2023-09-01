@@ -5,6 +5,8 @@ return {
     priority = 1000,
     init = function()
       vim.cmd("colorscheme onedark")
+      vim.cmd("hi clear Folded")
+      vim.cmd("hi clear FoldedNC")
     end,
     opts = {
       colors = {
@@ -45,6 +47,10 @@ return {
         WhichKey = { fg = "${blue}" },
         WhichKeyGroup = { fg = "${green}" },
         WhichKeySeparator = { fg = "${comment}" },
+        UfoFoldedEllipsis = { link = "FoldColumn" },
+        FoldColumn = { link = "Question" },
+        MiniIndentscopeSymbol = { link = "Todo" },
+        MiniIndentscopeSymbolOff = { link = "Error" },
       },
     },
   },

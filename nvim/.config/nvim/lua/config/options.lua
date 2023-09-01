@@ -12,14 +12,18 @@ opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
 opt.formatoptions = "jcroqlnt" -- tcqj
-opt.foldlevel = 99
+opt.foldcolumn = "1" -- '0' is not bad
+opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
+---@diagnostic disable: assign-type-mismatch
+opt.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:" -- icons:   
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.hidden = true
 opt.ignorecase = true -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute
-opt.list = true -- Show some invisible characters (tabs...
+opt.list = false -- Show some invisible characters (tabs...
+---@diagnostic disable: assign-type-mismatch
 opt.listchars = "tab:» ,extends:›,precedes:‹,nbsp:·,trail:·,eol:¬"
 opt.mouse = "nv"
 opt.number = true -- Print line number
