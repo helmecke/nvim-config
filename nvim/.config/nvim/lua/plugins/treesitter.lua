@@ -65,6 +65,24 @@ return {
       used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl" },
     }
 
+    parser_config.markdown = {
+      install_info = {
+        url = "~/Git/github.com/MDeiml/tree-sitter-markdown",
+        files = { "src/parser.c", "src/scanner.c" },
+        location = "tree-sitter-markdown",
+        branch = "split_parser",
+      },
+    }
+
+    parser_config.markdown_inline = {
+      install_info = {
+        url = "~/Git/github.com/MDeiml/tree-sitter-markdown",
+        files = { "src/parser.c", "src/scanner.c" },
+        location = "tree-sitter-markdown-inline",
+        branch = "split_parser",
+      },
+    }
+
     if type(opts.ensure_installed) == "table" then
       ---@type table<string, boolean>
       local added = {}

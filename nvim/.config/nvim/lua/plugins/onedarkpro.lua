@@ -33,6 +33,13 @@ return {
       highlights = {
         -- editor
         CursorLineNr = { link = "Normal" },
+        ["@text.strong"] = { link = "Bold" },
+        ["@text.emphasis"] = { fg = "${white}", italic = true },
+        ["@text.strike"] = { fg = "${white}", strikethrough = true },
+        ["@string.special.markdown_inline"] = { fg = "${cyan}" },
+        ["@text.reference.markdown_inline"] = { fg = "${blue}", underline = true },
+        ["@punctuation.delimiter.markdown"] = { fg = "${comment}" },
+        ["@punctuation.special.markdown"] = { fg = "${comment}" },
         PmenuSel = { fg = "${selection_fg}", bg = "${cursorline}" },
         PmenuThumb = { bg = "${comment}" },
         StatusLine = { fg = "${white}", bg = "${bg_statusline}" },
