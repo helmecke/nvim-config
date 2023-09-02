@@ -23,6 +23,7 @@ return {
       ["<C-t>"] = "actions.select_tab",
       ["<C-p>"] = "actions.preview",
       ["<C-c>"] = "actions.close",
+      ["gq"] = "actions.close",
       ["<C-l>"] = "actions.refresh",
       ["-"] = "actions.parent",
       ["_"] = "actions.open_cwd",
