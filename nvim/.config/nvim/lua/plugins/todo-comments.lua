@@ -1,14 +1,5 @@
 return {
   {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      defaults = {
-        ["<leader>s"] = { name = "+search" },
-      },
-    },
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -50,6 +41,15 @@ return {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
       { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo-comment" },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      defaults = {
+        ["<leader>s"] = { name = "+search" },
+      },
     },
   },
 }
