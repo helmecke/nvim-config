@@ -3,6 +3,7 @@ return {
   version = false, -- last release is way too old
   event = "InsertEnter",
   dependencies = {
+    "onsails/lspkind.nvim",
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
@@ -13,11 +14,6 @@ return {
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
     local cmp = require("cmp")
     local defaults = require("cmp.config.default")()
-
-    local border_opts = {
-      border = "rounded",
-      winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-    }
 
     return {
       completion = {
@@ -49,12 +45,14 @@ return {
         { name = "nvim_lsp_signature_help" },
       }),
       formatting = {
-        format = function(_, item)
-          local icons = require("config").icons.kinds
-          if icons[item.kind] then
-            item.kind = icons[item.kind] .. item.kind
-          end
-          return item
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+          local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+          local strings = vim.split(kind.kind, "%s", { trimempty = true })
+          kind.kind = " " .. (strings[1] or "") .. " "
+          kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+          return kind
         end,
       },
       experimental = {
@@ -63,8 +61,14 @@ return {
         },
       },
       window = {
-        completion = cmp.config.window.bordered(border_opts),
-        documentation = cmp.config.window.bordered(border_opts),
+        completion = {
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+          col_offset = -3,
+          side_padding = 0,
+        },
+        documentation = {
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+        },
       },
       sorting = defaults.sorting,
     }
