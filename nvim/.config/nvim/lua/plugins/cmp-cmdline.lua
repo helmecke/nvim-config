@@ -18,6 +18,9 @@ return {
       }, {
         { name = "buffer" },
       }),
+      formatting = {
+        fields = { "abbr" },
+      },
     }
   end,
   config = function(_, opts)
