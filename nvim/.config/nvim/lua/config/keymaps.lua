@@ -1,3 +1,4 @@
+local Util = require("util")
 local map = vim.keymap.set
 
 -- better up/down
@@ -68,15 +69,15 @@ map({ "n", "i", "v", "s" }, "<c-s>", "<cmd>w<cr>", { desc = "Save file" })
 map("n", "<c-l>", "<cmd>nohlsearch<bar>diffupdate<bar>normal! <c-l><cr>", { desc = "redraw / clear hlsearch / diff update" })
 
 -- toggle options
--- if Util.has("which-key.nvim") then
---   require("which-key").register({
---     ["<leader>t"] = {
---       name = "+toggle",
---     },
---   })
--- end
+if Util.has("which-key.nvim") then
+  require("which-key").register({
+    ["<leader>t"] = {
+      name = "+toggle",
+    },
+  })
+end
 -- stylua: ignore start
 map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
 map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>tl", function() Util.toggle("relativenumber", true) Util.toggle("number") end, { desc = "Toggle Line Numbers" })
+map("n", "<leader>tn", function() Util.toggle("relativenumber") Util.toggle("number") end, { desc = "Toggle Line Numbers" })
 -- stylua: ignore end
