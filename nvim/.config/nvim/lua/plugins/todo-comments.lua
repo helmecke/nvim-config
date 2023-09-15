@@ -5,7 +5,7 @@ return {
       "nvim-lua/plenary.nvim",
     },
     cmd = { "TodoTrouble", "TodoTelescope" },
-    event = { "BufReadPost", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile", "StdinReadPost" },
     opts = {
       search = {
         command = "rg",

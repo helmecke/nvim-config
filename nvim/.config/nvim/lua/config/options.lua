@@ -5,7 +5,6 @@ local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
-opt.colorcolumn = "80"
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 2 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
@@ -16,7 +15,7 @@ opt.foldcolumn = "1" -- '0' is not bad
 opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
 ---@diagnostic disable: assign-type-mismatch
-opt.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:" -- icons:   
+opt.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:" -- icons:   
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.hidden = true

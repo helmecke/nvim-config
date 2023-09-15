@@ -1,6 +1,6 @@
 return {
   "kylechui/nvim-surround",
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile", "StdinReadPre" },
   opts = {
     keymaps = {
       insert = "<C-g>r",

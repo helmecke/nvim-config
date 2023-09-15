@@ -2,6 +2,7 @@ return {
   "stevearc/oil.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
+    default_file_explorer = false,
     buf_options = { buflisted = true, bufhidden = "delete" },
     win_options = {
       -- https://github.com/stevearc/oil.nvim/issues/57

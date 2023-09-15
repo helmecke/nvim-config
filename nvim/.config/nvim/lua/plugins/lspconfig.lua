@@ -2,7 +2,7 @@ return {
   -- lspconfig
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile", "StdinReadPre" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
       { "folke/neodev.nvim", opts = {} },
@@ -23,6 +23,7 @@ return {
         update_in_insert = false,
         virtual_text = false,
         severity_sort = true,
+        float = { border = "rounded" },
       },
       -- add any global capabilities here
       capabilities = {},
@@ -101,69 +102,30 @@ return {
         has_cmp and cmp_nvim_lsp.default_capabilities() or {},
         opts.capabilities or {}
       )
-      local on_attach = function(client, bufnr)
-        if vim.bo[bufnr].filetype == "gotmpl" then
-          vim.diagnostic.disable(bufnr)
-        end
+      Util.on_attach(function(client, buffer)
+        require("plugins.lsp.keymaps").on_attach(client, buffer)
 
-        ---@param keys string
-        ---@param func any
-        ---@param desc string
-        local nmap = function(keys, func, desc)
-          vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-        end
-
-        -- diagnostic
-        nmap("]d", vim.diagnostic.goto_next, "Next diagnostic")
-        nmap("[d", vim.diagnostic.goto_prev, "Previous diagnostic")
-        nmap("<leader>cd", vim.diagnostic.open_float, "Line Diagnostics")
-
-        -- lsp
-        nmap("<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
-        nmap("<leader>cr", vim.lsp.buf.rename, "Rename")
-        nmap("<leader>ca", vim.lsp.buf.code_action, "Code action")
-        nmap("<leader>cA", function()
-          vim.lsp.buf.code_action({ context = { only = { "source" }, diagnostics = {} } })
-        end, "Source Action")
-        nmap("gD", vim.lsp.buf.declaration, "Goto Declaration")
-
-        -- See `:help K` for why this keymap
-        nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-        nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-        nmap("<leader>cf", vim.lsp.buf.format, "Format Document")
-
-        -- telescope
-        if Util.has("telescope.nvim") then
-          nmap("gr", require("telescope.builtin").lsp_references, "References")
-          nmap("gd", function()
-            require("telescope.builtin").lsp_definitions({ reuse_win = true })
-          end, "Goto definition")
-          nmap("gI", function()
-            require("telescope.builtin").lsp_implementations({ reuse_win = true })
-          end, "Goto implementation")
-          nmap("gy", function()
-            require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-          end, "Goto type definition")
-        else
-          nmap("gd", vim.lsp.buf.definition, "Goto definition")
-          nmap("gI", vim.lsp.buf.implementation, "Goto implementation")
-          nmap("gy", vim.lsp.buf.type_definition, "Goto Type definition")
+        if vim.bo[buffer].filetype == "gotmpl" then
+          vim.diagnostic.disable(buffer)
         end
 
         -- Create a command `:Format` local to the LSP buffer
-        vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+        vim.api.nvim_buf_create_user_command(buffer, "Format", function(_)
           vim.lsp.buf.format()
         end, { desc = "Format current buffer with LSP" })
 
         if client.name == "yamlls" then
           client.server_capabilities.documentFormattingProvider = true
         end
-      end
+        if client.name == "lua_ls" then
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end
+      end)
 
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
-          on_attach = on_attach,
         }, servers[server] or {})
 
         if opts.setup[server] then

@@ -81,3 +81,6 @@ map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = "Toggle Spe
 map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
 map("n", "<leader>tn", function() Util.toggle("relativenumber") Util.toggle("number") end, { desc = "Toggle Line Numbers" })
 -- stylua: ignore end
+
+vim.cmd("nmap { [")
+vim.cmd("nmap } ]")

@@ -1,6 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "BufReadPost", "BufNewFile", "StdinReadPost" },
   init = function()
     for _, keymap in pairs({
       "zo",
@@ -45,6 +45,7 @@ return {
       "toggleterm",
       "lazyterm",
       "oil_preview",
+      "fugitive",
     },
   },
 }

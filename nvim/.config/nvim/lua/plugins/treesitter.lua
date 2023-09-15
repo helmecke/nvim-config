@@ -2,9 +2,10 @@ return {
   "nvim-treesitter/nvim-treesitter",
   version = false,
   build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
+  event = { "BufReadPost", "BufNewFile", "StdinReadPost" },
   cmd = { "TSUpdateSync" },
   dependencies = {
+    "nvim-treesitter/playground",
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
   keys = {
@@ -45,7 +46,7 @@ return {
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = "<Enter>",
+        init_selection = "<C-Enter>",
         node_incremental = "<Enter>",
         scope_incremental = false,
         node_decremental = "<S-Enter>",

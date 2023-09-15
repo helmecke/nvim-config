@@ -10,9 +10,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 require("lazy").setup({
   spec = {
     { import = "plugins" },
-    { import = "plugins.extras.ft.go" },
-    { import = "plugins.extras.ft.java" },
-    { import = "plugins.extras.ft.yaml" },
+    { import = "plugins.extras.ft" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
