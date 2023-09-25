@@ -5,17 +5,19 @@ local map = vim.keymap.set
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- Move to window using the <Meta> hjkl keys
-map("n", "<m-h>", "<c-w>h", { desc = "Go to left window", remap = true })
-map("n", "<m-j>", "<c-w>j", { desc = "Go to lower window", remap = true })
-map("n", "<m-k>", "<c-w>k", { desc = "Go to upper window", remap = true })
-map("n", "<m-l>", "<c-w>l", { desc = "Go to right window", remap = true })
+if not Util.has("tmux.nvim") then
+  -- Move to window using the <Meta> hjkl keys
+  map("n", "<m-h>", "<c-w>h", { desc = "Go to left window", remap = true })
+  map("n", "<m-j>", "<c-w>j", { desc = "Go to lower window", remap = true })
+  map("n", "<m-k>", "<c-w>k", { desc = "Go to upper window", remap = true })
+  map("n", "<m-l>", "<c-w>l", { desc = "Go to right window", remap = true })
 
--- Resize window using the <Meta-Shift> hjkl keys
-map("n", "<m-s-h>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-map("n", "<m-s-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<m-s-k>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<m-s-l>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+  -- Resize window using the <Meta-Shift> hjkl keys
+  map("n", "<m-s-h>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+  map("n", "<m-s-j>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+  map("n", "<m-s-k>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+  map("n", "<m-s-l>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+end
 
 -- Easy buffer switching
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
