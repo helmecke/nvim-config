@@ -1,6 +1,7 @@
 return {
   {
     "mickael-menu/zk-nvim",
+    enabled = false,
     event = { "BufReadPre " .. vim.fn.expand("~") .. "/Documents/notes/**.md" },
     keys = {
       { "<leader>nn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", desc = "New note" },

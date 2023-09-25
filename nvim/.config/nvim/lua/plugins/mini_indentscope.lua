@@ -28,6 +28,7 @@ return {
         "lazyterm",
         "fugitive",
         "oil_preview",
+        "norg",
       },
       callback = function()
         vim.b.miniindentscope_disable = true
