@@ -82,6 +82,7 @@ end
 map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
 map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
 map("n", "<leader>tn", function() Util.toggle("relativenumber") Util.toggle("number") end, { desc = "Toggle Line Numbers" })
+map("n", "<leader>tc", function() Util.toggle("conceallevel", false, {2, 0}) end, { desc = "Toggle Conceal Level" })
 -- stylua: ignore end
 
 vim.cmd("nmap { [")
