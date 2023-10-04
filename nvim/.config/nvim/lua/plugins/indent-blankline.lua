@@ -1,5 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
+  version = "v2.20.8",
   event = { "BufReadPost", "BufNewFile", "StdinReadPost" },
   init = function()
     for _, keymap in pairs({
