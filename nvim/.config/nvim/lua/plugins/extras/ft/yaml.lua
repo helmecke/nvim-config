@@ -39,8 +39,10 @@ return {
           settings = {
             redhat = { telemetry = { enabled = false } },
             yaml = {
-              schemas = require("schemastore").yaml.schemas({ select = { "Helm Chart.yaml" } }),
+              schemas = require("schemastore").yaml.schemas(),
               keyOrdering = false,
+              hover = true,
+              completion = true,
               format = {
                 enable = true,
               },

@@ -73,17 +73,14 @@ map("n", "<c-l>", "<cmd>nohlsearch<bar>diffupdate<bar>normal! <c-l><cr>", { desc
 -- toggle options
 if Util.has("which-key.nvim") then
   require("which-key").register({
-    ["<leader>t"] = {
-      name = "+toggle",
+    ["<leader>u"] = {
+      name = "+ui",
     },
   })
 end
 -- stylua: ignore start
-map("n", "<leader>ts", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
-map("n", "<leader>tw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
-map("n", "<leader>tn", function() Util.toggle("relativenumber") Util.toggle("number") end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>tc", function() Util.toggle("conceallevel", false, {2, 0}) end, { desc = "Toggle Conceal Level" })
+map("n", "<leader>us", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
+map("n", "<leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
+map("n", "<leader>un", function() Util.toggle("relativenumber") Util.toggle("number") end, { desc = "Toggle Line Numbers" })
+map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {2, 0}) end, { desc = "Toggle Conceal Level" })
 -- stylua: ignore end
-
-vim.cmd("nmap { [")
-vim.cmd("nmap } ]")

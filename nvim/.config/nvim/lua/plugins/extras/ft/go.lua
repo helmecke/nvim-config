@@ -12,6 +12,15 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "mason.nvim",
+        opts = function(_, opts)
+          opts.ensure_installed = opts.ensure_installed or {}
+          vim.list_extend(opts.ensure_installed, { "golangci-lint" })
+        end,
+      },
+    },
     opts = {
       servers = {
         gopls = {
@@ -56,9 +65,10 @@ return {
             },
           },
         },
+        golangci_lint_ls = {},
       },
       setup = {
-        gopls = function(_, opts)
+        gopls = function(_, _)
           -- workaround for gopls not supporting semanticTokensProvider
           -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
           require("util").on_attach(function(client, _)

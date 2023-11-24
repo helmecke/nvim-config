@@ -1,5 +1,6 @@
 return {
   "jakewvincent/mkdnflow.nvim",
+  enabled = false,
   ft = "markdown",
   opts = {
     modules = {

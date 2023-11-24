@@ -1,16 +1,5 @@
 return {
   {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      defaults = {
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>gh"] = { name = "+hunks" },
-        ["<leader>t"] = { name = "+toggle" },
-      },
-    },
-  },
-  {
     "lewis6991/gitsigns.nvim",
     event = { "BufReadPre", "BufNewFile", "StdinReadPre" },
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -42,12 +31,23 @@ return {
         map("n", "<leader>ghd", gs.diffthis, "Diff This")
         map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
 
-        map("n", "<leader>tb", function() gs.blame_line({ full = true }) end, "Toggle blame line")
-        map('n', '<leader>td', gs.toggle_deleted, "Toggle deleted")
+        map("n", "<leader>ub", function() gs.blame_line({ full = true }) end, "Toggle blame line")
+        map('n', '<leader>ud', gs.toggle_deleted, "Toggle deleted")
 
         -- Text object
         map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
       end,
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      defaults = {
+        ["<leader>g"] = { name = "+git" },
+        ["<leader>gh"] = { name = "+hunks" },
+        ["<leader>u"] = { name = "+ui" },
+      },
     },
   },
 }
