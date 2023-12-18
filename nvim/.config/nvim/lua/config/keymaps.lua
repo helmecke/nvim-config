@@ -22,6 +22,7 @@ end
 -- Easy buffer switching
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "<leader>bb", "<cmd>edit #<cr>", { desc = "Switch to other buffer" })
 
 -- Clear search
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Clear search" })

@@ -36,7 +36,7 @@ return {
       },
     },
     keys = {
-      { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Switch buffer" },
+      { "<leader>bf", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       {
         "<leader>fF",
