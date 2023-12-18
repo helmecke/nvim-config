@@ -14,8 +14,14 @@ opt.formatoptions = "jcroqlnt" -- tcqj
 opt.foldcolumn = "1" -- '0' is not bad
 opt.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 opt.foldlevelstart = 99
----@diagnostic disable: assign-type-mismatch
-opt.fillchars = "eob: ,fold: ,foldopen:,foldsep: ,foldclose:" -- icons:   
+opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+} -- icons:   
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.hidden = true
