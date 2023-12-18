@@ -1,14 +1,5 @@
 return {
   {
-    "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      defaults = {
-        ["<leader>b"] = { name = "+buffer" },
-      },
-    },
-  },
-  {
     "akinsho/bufferline.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
     event = "VeryLazy",
@@ -39,6 +30,15 @@ return {
       { "<leader>b9", "<cmd>BufferLineGoToBuffer 9<cr>", desc = "goto 9" },
       { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Previous buffer" },
       { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+    },
+  },
+  {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      defaults = {
+        ["<leader>b"] = { name = "+buffer" },
+      },
     },
   },
 }
