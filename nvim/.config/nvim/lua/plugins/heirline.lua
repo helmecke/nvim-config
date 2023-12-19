@@ -30,8 +30,10 @@ return {
     end
 
     local colors = {
-      bright_bg = utils.get_highlight("StatusLine").bg,
-      bright_fg = utils.get_highlight("StatusLine").fg,
+      active_bg = utils.get_highlight("StatusLine").bg,
+      active_fg = utils.get_highlight("StatusLine").fg,
+      inactive_bg = utils.get_highlight("StatusLineNC").bg,
+      inactive_fg = utils.get_highlight("StatusLineNC").fg,
       red = utils.get_highlight("DiagnosticError").fg,
       dark_red = utils.get_highlight("DiffDelete").bg,
       green = utils.get_highlight("String").fg,
@@ -313,7 +315,7 @@ return {
         local search = self.search
         return string.surround(string.format("%d/%d", search.current, math.min(search.total, search.maxcount)))
       end,
-      hl = { fg = "bright_bg", bg = "blue" },
+      hl = { fg = "active_bg", bg = "blue" },
     }
 
     local Git = {
@@ -441,7 +443,7 @@ return {
       hl = { fg = colors.blue },
     }
 
-    ViMode = utils.surround({ " ", " " }, "bright_bg", { ViMode })
+    ViMode = utils.surround({ " ", " " }, "active_bg", { ViMode })
 
     local DefaultStatusline = {
       Start,
@@ -460,7 +462,7 @@ return {
 
     local InactiveStatusline = {
       condition = conditions.is_not_active,
-      hl = { fg = "gray", force = true },
+      hl = { fg = "inactive_fg", force = true },
       Start,
       ViMode,
       FileSize,
@@ -647,10 +649,10 @@ return {
         condition = function()
           return not conditions.is_active()
         end,
-        utils.surround({ "", "" }, "bright_bg", { hl = { fg = "gray", force = true }, Navic }),
+        utils.surround({ "", "" }, "inactive_bg", { hl = { fg = "gray", force = true }, Navic }),
       },
       -- A winbar for regular files
-      utils.surround({ "", "" }, "bright_bg", Navic),
+      utils.surround({ "", "" }, "active_bg", Navic),
     }
 
     require("heirline").load_colors(colors)

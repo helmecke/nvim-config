@@ -25,10 +25,11 @@ return {
     ensure_installed = {
       "bash",
       "c",
+      "gotmpl",
       "html",
+      "http",
       "javascript",
       "json",
-      "http",
       "lua",
       "luadoc",
       "luap",
@@ -56,17 +57,18 @@ return {
   config = function(_, opts)
     local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
-    parser_config.gotmpl = {
+    parser_config["gotmpl"] = {
       install_info = {
-        url = "https://github.com/msvechla/tree-sitter-go-template",
-        branch = "fix_brackets",
+        -- url = "https://github.com/msvechla/tree-sitter-go-template",
+        url = "https://github.com/ngalaiko/tree-sitter-go-template",
+        -- branch = "fix_brackets",
         files = { "src/parser.c" },
       },
-      filetype = "gotmpl",
+      filetype = "helm",
       used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl" },
     }
 
-    parser_config.markdown = {
+    parser_config["markdown"] = {
       install_info = {
         url = "~/Git/github.com/MDeiml/tree-sitter-markdown",
         files = { "src/parser.c", "src/scanner.c" },
@@ -75,7 +77,7 @@ return {
       },
     }
 
-    parser_config.markdown_inline = {
+    parser_config["markdown_inline"] = {
       install_info = {
         url = "~/Git/github.com/MDeiml/tree-sitter-markdown",
         files = { "src/parser.c", "src/scanner.c" },
