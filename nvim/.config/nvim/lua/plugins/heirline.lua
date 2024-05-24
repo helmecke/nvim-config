@@ -658,7 +658,7 @@ return {
     require("heirline").load_colors(colors)
     require("heirline").setup({
       statusline = StatusLines,
-      winbar = WinBars,
+      -- winbar = WinBars,
       opts = {
         -- if the callback returns true, the winbar will be disabled for that window
         -- the args parameter corresponds to the table argument passed to autocommand callbacks. :h nvim_lua_create_autocmd()
