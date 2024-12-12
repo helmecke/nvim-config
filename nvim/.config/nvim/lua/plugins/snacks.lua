@@ -1,8 +1,11 @@
 return {
   "folke/snacks.nvim",
   opts = {
+    ---@class snacks.statuscolumn.Config
+    ---@field enabled? boolean
     statuscolumn = {
-      enabled = true,
+      left = { "mark", "sign", "git" },
+      right = { "fold" },
       folds = {
         open = true,
       },
