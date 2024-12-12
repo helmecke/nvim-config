@@ -10,5 +10,8 @@ return {
         open = true,
       },
     },
+    notifier = {
+      enabled = false,
+    },
   },
 }
