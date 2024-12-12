@@ -5,6 +5,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.g.trouble_lualine = false
+
 local opt = vim.opt
 
 opt.listchars = "tab:» ,extends:›,precedes:‹,nbsp:·,trail:·,eol:¬"
