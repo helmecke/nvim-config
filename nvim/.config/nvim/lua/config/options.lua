@@ -6,11 +6,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.g.trouble_lualine = false
+vim.g.snacks_animate = false
 
 local opt = vim.opt
 
 opt.listchars = "tab:» ,extends:›,precedes:‹,nbsp:·,trail:·,eol:¬"
-opt.laststatus = 2
+-- opt.laststatus = 2
 opt.pumblend = 0
 opt.showbreak = "> "
 opt.wrap = true
