@@ -18,7 +18,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- import/override with your plugins
     { import = "plugins" },
-    { import = "plugins.extras.lang" },
+    -- { import = "plugins.extras.lang" },
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
@@ -30,7 +30,6 @@ require("lazy").setup({
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   ui = {
-    border = "rounded",
     backdrop = 100,
   },
   install = { colorscheme = { "onedark", "habamax" } },
