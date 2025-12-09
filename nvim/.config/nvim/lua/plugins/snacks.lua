@@ -3,6 +3,9 @@ return {
   opts = {
     ---@class snacks.statuscolumn.Config
     ---@field enabled? boolean
+    notify = {
+      enabled = false,
+    },
     statuscolumn = {
       left = { "mark", "sign", "git" },
       right = { "fold" },
