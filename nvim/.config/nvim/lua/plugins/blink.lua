@@ -9,8 +9,14 @@ return {
   ---@type blink.cmp.Config
   opts = {
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
+      default = { "lsp", "path", "snippets", "buffer" },
       providers = {
+        lsp = {
+          score_offset = 1000,
+        },
+        snippets = {
+          score_offset = 900,
+        },
         ripgrep = {
           module = "blink-ripgrep",
           name = "Ripgrep",
@@ -18,6 +24,9 @@ return {
       },
     },
     completion = {
+      trigger = {
+        show_in_snippet = false,
+      },
       list = {
         selection = {
           preselect = false,
@@ -30,17 +39,18 @@ return {
           columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "source_name" } },
         },
       },
-      -- documentation = {
-      --   window = {
-      --     border = "rounded",
-      --   },
-      -- },
+      documentation = {
+        window = {
+          -- border = "rounded",
+        },
+      },
     },
-    -- signature = {
-    --   window = {
-    --     border = "rounded",
-    --   },
-    -- },
+    signature = {
+      enabled = true,
+      window = {
+        -- border = "rounded",
+      },
+    },
     keymap = {
       ["<Esc>"] = { "hide", "fallback" },
       ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
